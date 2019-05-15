@@ -18,16 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::post('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
-Route::get('/foodrecipe/appetaizer', function () {
-    return view('foodrecipe.appetaizer');
-});
 // Route::get('/profil', function () {
 //     return view('profil.index');
 // });
-Route::get('profil', 'UserController@profile');
-Route::post('profile', 'UserController@update_avatar');
+// Route::get('profil', 'UserController@profile');
+// Route::post('profile', 'UserController@update_avatar');
 
 Route::prefix('admin')->group(function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -39,10 +36,32 @@ Route::prefix('admin')->group(function(){
 Route::get('/foodprofil', function () {
     return view('foodprofil.index');
 });
-Route::get('/foodrecipe', function () {
-    return view('foodrecipe.index');
+// Route::get('/profil', function () {
+//     return view('profil.index');
+// });
+
+Route::prefix('profil')->group(function(){
+	Route::get('/', 'UserController@profile')->name('profil.index');
+	Route::post('/edit', 'UserController@edit')->name('profil.edit');
 });
+// Route::get('/foodrecipe', function () {
+//     return view('foodrecipe.index');
+// });
+Route::prefix('foodrecipe')->group(function(){
+	Route::get('/dessert', 'ResepController@dessert')->name('foodrecipe.dessert');
+	Route::get('/maincourse', 'ResepController@maincourse')->name('foodrecipe.maincourse');
+	Route::get('/appetaizer', 'ResepController@appetaizer')->name('foodrecipe.appetaizer');
+
+});
+Route::resource('foodrecipe','ResepController');
+
+
 // Route::get('/marketplace', function () {
 //     return view('marketplace.index');
 // });
+Route::prefix('marketplace')->group(function(){
+	Route::get('/dessert', 'BarangDijualController@dessert')->name('marketplace.dessert');
+	Route::get('/appetaizer', 'BarangDijualController@appetaizer')->name('marketplace.appetaizer');
+	Route::get('/maincourse', 'BarangDijualController@maincourse')->name('marketplace.maincourse');
+});
 Route::resource('marketplace','BarangDijualController');

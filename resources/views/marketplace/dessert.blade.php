@@ -10,7 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: white">
-<p class="judul" style="top: 21%">Food Recipe</p>
+<p class="judul" style="top: 21%">Market Place</p>
 <img src="/img/mppl11.png" class="login-img9">  
 <img src="/img/mppl12.png" class="login-img10">
 <img src="/img/mppl12.png" class="login-img11"> 
@@ -21,33 +21,26 @@
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel">
         <div class="carousel-inner">
-          <div class="item active">
-            <div class="col-xs-4"><a href="#1"><img src="/img/Resep-Pecel.jpg" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/e91e63/000000" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/9c27b0/000000" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/673ab7/000000" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/4caf50/000000" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive"></a></div>
-          </div>
-          <!-- add  more items here -->
-          <!-- Example item start:  -->
-          
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive"></a></div>
-          </div>
-          
+          @if(count($barang))
+            <!-- {{count($barang)}} -->
+            @foreach($barang as $b)
+              @if($loop->first)
+              <div class="item active">
+              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100px; height: 80px; "><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
+             </div>
+             @else
+              <div class="item">
+              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 200px; height: 80px; "><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
+             </div>
+             @endif
+            @endforeach
+            
+          @else
+            <p class="judul">Tidak Ada Data</p>
+          @endif
+          </div>       
           <!--  Example item end -->
-        </div>
+        
         <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
         <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
       </div>
@@ -59,7 +52,7 @@
 ?>
 <img class="crop" src=<?php echo $avatar ?>>
 <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
-<a href="/foodrecipe/create" class="logout" style="top: 81%;">Post</a>
+<a href="/marketplace/create" class="logout" style="top: 81%;">Post</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout">{{ __('Logout') }}</button>
