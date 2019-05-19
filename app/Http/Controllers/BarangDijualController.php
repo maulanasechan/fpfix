@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Auth;
+use App\Komen;
 
 class BarangDijualController extends Controller
 {
@@ -133,6 +134,7 @@ class BarangDijualController extends Controller
 
     public function foodProfil ($id) {
         $barang = barang_dijual::find($id);
+        $komen = Komen::where('id_barang', $id)->where('tipe', 0)->get();
         $rate = Rating::where('id_barang', $id)->where('tipe', 0)->get();
 
         $userRate = Rating::where('id_user', Auth::user()->id)->first();
@@ -150,7 +152,8 @@ class BarangDijualController extends Controller
             $rating = $rate->sum('rate')/$rate->count() ;
         }
         
-        return view('foodprofil.index')->with('barang', $barang)->with('rating', $rating)->with('rate', $userRate);
+        // return $komen[0]->created_at->format('d M Y') ;
+        return view('marketplace.foodprofil.index')->with('barang', $barang)->with('rating', $rating)->with('rate', $userRate)->with('komen', $komen);
     }
 
     public function foodProfilRate (Request $request) {
@@ -169,6 +172,18 @@ class BarangDijualController extends Controller
             // return $rating;
             $rating->save();
         }
+
+        return redirect()->back();
+    }
+
+    public function foodProfilKomen(Request $request) {
+        
+        $komen = new Komen;
+        $komen->id_user = Auth::user()->id;
+        $komen->id_barang = $request->id_barang;
+        $komen->komen = $request->komen;
+        $komen->tipe = 0;
+        $komen->save();
         return redirect()->back();
     }
 }

@@ -24,7 +24,7 @@ class UserController extends Controller
     public function post()
     {   
         $user = Auth::user();
-        $barang = barang_dijual::all();
+        $barang = barang_dijual::all(); //ganti resep
         return view('profil.post', compact('user','barang'));
     }
     
@@ -37,7 +37,7 @@ class UserController extends Controller
         $item->username = $request->name;
         $item->email = $request->email;
         $item->alamat = $request->alamat;
-
+        
         if (isset($request->password)) {
             // return $request->password;
 
@@ -46,7 +46,7 @@ class UserController extends Controller
             }
             //check confirmation
             if (strlen($request->new_password) <8 ) {
-                return 'Password min 8 character';
+                return 'New Password min 8 character';
             }
             
             elseif ($request->new_password == $request->confirm_password) {
