@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Food Profil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -19,15 +19,14 @@
         {{ session('error') }}
     </div>
   @endif --}}
-<body>
-    
+<body>    
   <img src="/img/mppl11.png" class="login-img9">  
       <img src="/img/mppl12.png" class="login-img10">
       <img src="/img/mppl12.png" class="login-img11"> 
       <img src="/img/mppl13.png" class="login-img12"> 
       <img src="/img/mppl15.png" class="login-img15">
       <p class="judul" style="top: 20%">{{$barang->nama_barang}}</p>
-      <img class="cropprof"  src="/img/Resep-pecel.jpg" style="left: 30%">      
+      <img class="cropprof"  src="/storage/{{$barang->filename}}" style="left: 30%">      
       <div class="box">
         Harga : {{$barang->harga}}
       </div>
@@ -45,7 +44,7 @@
       <button class="komen"  data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113;">
         Comment
       </button>
-      <center><a href="/home" class="round-button-login-new" style="font-size: 100%; line-height: 400%">Buy</a></center>
+      <!-- <center><a href="/home" class="round-button-login-new" style="font-size: 100%; line-height: 400%">Buy</a></center> -->
       <a href="/foodrecipe" class="logout" style="top: 79%;">Back</a>
       <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
         @csrf
@@ -112,6 +111,12 @@
       </div>  
     </div>
   </div>  
+
+  <div class="postkomen">
+    <img src="/img/user.jpg" style="width: 10%;"></br>
+    Maulana 
+    <br>" kontol "
+  </div>
 
 </body>
 </html>
