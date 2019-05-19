@@ -43,7 +43,7 @@
                 </center>
 
                 <center>
-                        <input id="password" type="password" class="" name="password" required placeholder="Old Password" style="top: 52%; height: 6%">
+                        <input id="password" type="password" class="" name="password" placeholder="Old Password" style="top: 52%; height: 6%">
                 </center>
 
                 <center>
