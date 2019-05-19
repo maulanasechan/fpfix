@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Market Place</title>
+        <title>Food Recipe</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -27,14 +27,13 @@
             $email = Auth::user()->email; 
             $alamat = Auth::user()->alamat; 
             $avatar = Auth::user()->avatar;
-            $id = Auth::user()->id;
           ?>
         <img src="/img/mppl11.png" class="login-img9">  
         <img src="/img/mppl12.png" class="login-img10">
         <img src="/img/mppl12.png" class="login-img11"> 
         <img src="/img/mppl13.png" class="login-img12">
         <img src="/img/mppl15.png" class="login-img15"> 
-        <a href="/foodrecipe" class="logout" style="top: 80%;">Back</a>
+        <a href="/foodrecipe/appetaizer" class="logout" style="top: 80%;">Back</a>
         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
             @csrf
             <button type="submit" class="logout">{{ __('Logout') }}</button>
@@ -42,21 +41,30 @@
         
         <img class="crop" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
-        <p class="judul">Add Recipe</p>
-        <form method="POST" action="{{ route('foodrecipe.store') }}" enctype="multipart/form-data">
+        <p class="judul" style="top: 6.5%; font-size: 250%">Add Recipe</p>
+        <form method="POST" action="{{ route('marketplace.store') }}" enctype="multipart/form-data">
             @csrf
-            <input type="text" name="nama_makanan" placeholder="Nama Makanan" style="top: 40%; height: 7%">
-            <input type="hidden" name="id_user" value= <?php echo $id; ?> >
-            <select name="tipe" style="top: 48%; height: 7%">
+            <?php 
+                $id = 1;  
+            ?>
+            <input type="text" name="nama_makanan" placeholder="Nama Makanan" style="top: 20%; height: 6%">
+            <input type="hidden" name="id_penjual" value= <?php echo $id; ?> >
+            <input type="text" name="deskripsi" placeholder="Deskripsi Makanan" style="top: 26.5%; height: 6%">
+            <input type="text" name="alat" placeholder="Alat" style="top: 33%; height: 6%">
+            <input type="text" name="bahan" placeholder="Bahan" style="top: 39.5%; height: 6%">
+            <select name="tipe" style="top: 46%; height: 6%">
               <option value="1">Appetaizer</option>
               <option value="2">Main Course</option>
               <option value="3">Dessert</option>
             </select>
-            <input type="text" name="bahan" placeholder="Bahan" style="top: 56%; height: 7%">
-            <input type="text" name="alat" placeholder="Alat" style="top: 64%; height: 7%">
-            <input type="file" name="cover" class="avatar" style="top: 72%">
+            <input type="text" name="langkah" placeholder="Langkah 1" style="top: 52.5%; height: 6%">
+            <input type="text" name="langkah" placeholder="Langkah 2" style="top: 59%; height: 6%">
+            <input type="text" name="langkah" placeholder="Langkah 3" style="top: 65.5%; height: 6%">
+            <input type="text" name="langkah" placeholder="Langkah 4" style="top: 72%; height: 6%">
+            <input type="text" name="langkah" placeholder="Langkah 5" style="top: 78.5%; height: 6%">
+            <input type="file" name="cover" class="avatar" style="top: 84%">
             <center>
-                <button type="submit" class="round-button-login-new" style="top: 86%; width: 5%; height: 10%">Post</button>
+                <button type="submit" class="round-button-login-new" style="top: 90%; width: 5%; height: 10%">Post</button>
             </center>
         </form>
     </body>

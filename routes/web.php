@@ -41,8 +41,9 @@ Route::get('/foodprofil', function () {
 // });
 
 Route::prefix('profil')->group(function(){
-	Route::get('/', 'UserController@profile')->name('profil.index');
-	Route::post('/edit', 'UserController@edit')->name('profil.edit');
+	Route::get('/edit', 'UserController@profile')->name('profil.index');
+	Route::post('/save', 'UserController@edit')->name('profil.edit');
+	Route::get('/', 'UserController@post')->name('profil.post');
 });
 // Route::get('/foodrecipe', function () {
 //     return view('foodrecipe.index');

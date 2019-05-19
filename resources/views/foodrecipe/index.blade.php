@@ -32,7 +32,7 @@
         ?>
         <img class="crop" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
-        <a href="/foodrecipe/create" class="logout" style="top: 79%;">Post</a>
+        <a href="/foodrecipe/create" class="logout" style="top: 79%;">Add</a>
         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
             @csrf
             <button type="submit" class="logout">{{ __('Logout') }}</button>

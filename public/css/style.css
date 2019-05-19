@@ -341,6 +341,17 @@
         font-size: 160%;           
     }
 
+    .home-link2{
+        text-decoration: none;
+        word-spacing: 150%;
+        color: #354857;
+        z-index: 2;
+        position: absolute;
+        font-size: 500%;
+        left: 18%;
+        top: 30%;
+    }
+
     .home-link{
         text-decoration: none;
         font-family: blacksword; 
@@ -354,6 +365,7 @@
     }
 
     .home-link:hover {
+        text-decoration: none;
         color: #AD9336;  
         font-size: 500%;           
     }
@@ -516,4 +528,50 @@
           background-image: none;
         }
       }
+    }
+
+    .box{
+        width: 30%;
+        height: 6%;
+        padding: 12px 20px;
+        margin:0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: white;
+        background-image: linear-gradient(to right, #354857 , #19354B);
+        z-index: 2;
+        position: absolute;
+        left: 42%;
+        top: 34%;
+    }
+
+    .rating{
+        z-index: 2; 
+        position: absolute; 
+        top: 54%; 
+        left: 42%; 
+        font-weight: bold; 
+        color: #354857;
+    }
+
+    .komen{
+        background-color: #AD9336;
+        color: white;
+        font-family: 'Nunito', sans-serif;
+        font-weight: bold;
+        text-decoration: none;
+        border: 0px solid;
+        padding: 10px;
+        font-size: 110%;        
+        text-align: center;
+        right: 28%;
+        top: 55%;
+        z-index: 2; 
+        position: absolute;
+    }
+
+    .komen:hover{
+        color: #354857;
     }
