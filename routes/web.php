@@ -70,6 +70,7 @@ Route::prefix('marketplace')->group(function(){
 	Route::prefix('foodprofil')->group(function(){
 		Route::get('/{id}', 'BarangDijualController@foodProfil')->name('foodprofil');
 		Route::post('/rate', 'BarangDijualController@foodProfilRate')->name('foodprofil.rate');
+		Route::post('/komen', 'BarangDijualController@foodProfilKomen')->name('foodprofil.komen');
 	});
 });
 Route::resource('marketplace','BarangDijualController');

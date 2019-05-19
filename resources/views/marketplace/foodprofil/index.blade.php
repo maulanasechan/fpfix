@@ -99,12 +99,13 @@
       <div class="modal-content" style="width: 100%; height: 230px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="color: #354857">Rate This Food</h4>
+          <h4 class="modal-title" style="color: #354857">Comment This Food</h4>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('marketplace.store') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('foodprofil.komen') }}" enctype="multipart/form-data">
             @csrf
-            <input type="text" name="komen" placeholder="Type Your Comment" style="width: 80%; height: 150%; top: 120%;">
+            <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">
+            <input required type="text" name="komen" placeholder="Type Your Comment" style="width: 80%; height: 150%; top: 120%;">
             <button type="submit" class="round-button-login-new" style="top: 380%; width: 10%; height: 250%">Save</button>
           </form>
         </div>
@@ -112,11 +113,16 @@
     </div>
   </div>  
 
-  <div class="postkomen">
-    <img src="/img/user.jpg" style="width: 10%;"></br>
-    Maulana 
-    <br>" kontol "
-  </div>
+  <p class="judul" style="top: 70%">Komentar</p>
+  @foreach ($komen as $item)
+    <div class="postkomen" style="top:{{85+($loop->index*16)}}%">
+      <img src="{{$item->user->avatar}}" style="width: 10%; height: 50px;"></br>
+      {{$item->user->username}}
+      <br>" {{$item->komen}} "
+    </div>
+  @endforeach
+  
+  
 
 </body>
 </html>
