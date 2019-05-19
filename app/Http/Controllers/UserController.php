@@ -24,7 +24,7 @@ class UserController extends Controller
     public function post()
     {   
         $user = Auth::user();
-        $barang = barang_dijual::all();
+        $barang = barang_dijual::all(); //ganti resep
         return view('profil.post', compact('user','barang'));
     }
     
