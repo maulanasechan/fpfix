@@ -57,6 +57,17 @@ return [
             'provider' => 'admins',
             'hash' => false,
         ],
+
+        'penjual' => [
+            'driver' => 'session',
+            'provider' => 'penjuals',
+        ],
+
+        'penjual-api' => [
+            'driver' => 'token',
+            'provider' => 'penjuals',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -85,6 +96,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+
+        'penjuals' => [
+            'driver' => 'eloquent',
+            'model' => App\Penjual::class,
         ],
         // 'users' => [
         //     'driver' => 'database',
@@ -118,6 +134,12 @@ return [
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 20,
+        ],
+
+        'penjuals' => [
+            'provider' => 'penjuals',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

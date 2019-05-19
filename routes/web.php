@@ -33,6 +33,15 @@ Route::prefix('admin')->group(function(){
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
 
+Route::prefix('penjual')->group(function(){
+	Route::get('/register', 'Auth\PenjualLoginController@showRegisterForm')->name('penjual.register');
+	Route::post('/register', 'Auth\PenjualLoginController@register')->name('penjual.register.submit');
+	Route::get('/login', 'Auth\PenjualLoginController@showLoginForm')->name('penjual.login');
+	Route::post('/login', 'Auth\PenjualLoginController@login')->name('penjual.login.submit');
+	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
+	Route::get('/logout', 'Auth\PenjualLoginController@logout')->name('penjual.logout');
+});
+
 // Route::get('/foodprofil', 'BarangDijualController@foodProfil');
 // Route::prefix('foodprofil')->group(function(){
 // 	Route::get('/', 'BarangDijualController@foodProfil');

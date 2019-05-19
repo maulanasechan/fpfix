@@ -152,6 +152,7 @@ class BarangDijualController extends Controller
             $rating = $rate->sum('rate')/$rate->count() ;
         }
         
+        // return $komen[0]->created_at->format('d M Y') ;
         return view('marketplace.foodprofil.index')->with('barang', $barang)->with('rating', $rating)->with('rate', $userRate)->with('komen', $komen);
     }
 
