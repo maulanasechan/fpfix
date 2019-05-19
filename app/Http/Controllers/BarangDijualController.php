@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Auth;
 use App\Komen;
+use App\Order;
 
 class BarangDijualController extends Controller
 {
@@ -185,5 +186,15 @@ class BarangDijualController extends Controller
         $komen->tipe = 0;
         $komen->save();
         return redirect()->back();
+    }
+
+    public function buyFood (Request $request) {
+        $order = new Order;
+        $order->id_barang = $request->id_barang;
+        $order->amount = $request->jumlah;
+        $order->id_user = Auth::user()->id;
+        $order->status = 0;
+        $order->save();
+        return Order::all();
     }
 }

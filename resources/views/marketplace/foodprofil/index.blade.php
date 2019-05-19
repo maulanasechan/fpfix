@@ -129,18 +129,21 @@
     <div class="modal-dialog" style="width: 50%">
     
       <!-- Modal content-->
-      <div class="modal-content" style="width: 100%; height: 250px;">
+      <div class="modal-content" style="width: 100%; height: 280px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title" style="color: #354857">Buy This Food</h4>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('marketplace.store') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('buyFood') }}" enctype="multipart/form-data">
             @csrf
-            <input type="number" name="jumlah" placeholder="Type Your Value" style="width: 80%; height: 150%; top: 120%;">
-            <input type="file" name="bukti" style="width: 80%; height: 150%; top: 230%; position: absolute; z-index: 2; left: 10%;">
-            <button type="submit" class="round-button-login-new" style="top: 450%; width: 10%; height: 250%">Save</button>
+            <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">
+            <input type="number" name="jumlah" placeholder="The Amount of Goods" style="width: 80%; height: 150%; top: 120%;">
+            <button type="submit" class="round-button-login-new" style="top: 550%; width: 10%; height: 250%">Save</button>
           </form>
+          <div class="box" style="width: 80%; height: 150%; top: 210%; position: absolute; z-index: 2; left: 10%;">
+              Rp. <i id="total"></i>
+          </div>
         </div>
       </div>  
     </div>

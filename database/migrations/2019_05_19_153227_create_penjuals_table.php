@@ -23,6 +23,7 @@ class CreatePenjualsTable extends Migration
             $table->string('avatar');
             $table->timestamp('waktu_buka')->nullable();
             $table->timestamp('waktu_tutup')->nullable();
+            $table->string('rekening');
             $table->timestamps();
         });
     }
