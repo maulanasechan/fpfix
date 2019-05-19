@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\User;
+
 use Hash;
+use App\barang_dijual;
+use App\User;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -18,6 +20,14 @@ class UserController extends Controller
         $user = Auth::user();
         return view('profil.index',compact('user',$user));
     }
+
+    public function post()
+    {   
+        $user = Auth::user();
+        $barang = barang_dijual::all();
+        return view('profil.post', compact('user','barang'));
+    }
+    
     public function edit(Request $request)
     {
         
