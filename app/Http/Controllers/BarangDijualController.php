@@ -143,7 +143,13 @@ class BarangDijualController extends Controller
             $userRate = $userRate->rate;
         }
         // return $userRate;
-        $rating = $rate->sum('rate')/$rate->count() ;
+        if (!isset($rate[0])) {
+            $rating = 0 ;
+        } 
+        else {
+            $rating = $rate->sum('rate')/$rate->count() ;
+        }
+        
         return view('foodprofil.index')->with('barang', $barang)->with('rating', $rating)->with('rate', $userRate);
     }
 
