@@ -21,6 +21,23 @@ class BarangDijualController extends Controller
         return view('marketplace.index');
     }
 
+    public function dessert()
+    {
+        //
+        $barang = barang_dijual::all();
+        return view('marketplace.dessert', compact('barang'));
+    }
+
+    public function appetaizer()
+    {
+        //
+        return view('marketplace.appetaizer');
+    }
+    public function maincourse()
+    {
+        //
+        return view('marketplace.maincourse');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -63,8 +80,8 @@ class BarangDijualController extends Controller
         $item->filename = $cover->getFilename().'.'.$extension;
         $item->save();
 
-        // return redirect()->route('home')->with('success','Book added successfully...');
-        return $item;
+        return redirect()->route('home')->with('success','Book added successfully...');
+        // return $item;
     }
 
     /**

@@ -69,7 +69,7 @@
             </center>
 
             <center>
-                    <input id="avatar" type="file" name="avatar" required>
+                    <input id="avatar" type="hidden" name="avatar" value="/img/user.jpg">
             </center>
 
             <center>

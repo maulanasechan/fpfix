@@ -212,6 +212,25 @@
         transform: translate(-50%, -50%);
     }
 
+    input[type=number], select {
+        width: 38.5%;
+        height: 8.75%;
+        padding: 12px 20px;
+        margin:0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: white;
+        background-image: linear-gradient(to right, #354857 , #19354B);
+        z-index: 2;
+        position: absolute;
+        left: 50%;
+        margin-right: -50%;
+        top: 69.75%;
+        transform: translate(-50%, -50%);
+    }
+
     input[type=password], select {
         width: 38.5%;
         height: 8.75%;
@@ -394,6 +413,15 @@
         transform: translate(-50%, -50%);
     }
 
+    .cropprof {
+      position: absolute;
+      top: 36%;
+      left: 6.65%;
+      height: 25%;
+      width: auto;
+      border-radius: 34%;
+    }
+
     .logout{
         background-color: #354847;
         color: white;
@@ -402,6 +430,7 @@
         text-decoration: none;
         border: 0px solid;
         padding: 10px;
+        font-size: 110%;
         box-shadow: 6px 6px #EFC113;        
         text-align: center;
         right: 2%;

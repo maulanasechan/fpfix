@@ -35,7 +35,10 @@
             @csrf
             <button type="submit" class="home-login-button">{{ __('Logout') }}</button>
         </form>
-        <img class="crop" src="/img/prof.jpg">
+        <?php
+            $avatar = Auth::user()->avatar;
+        ?>
+        <img class="crop" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
     </body>
 </html>
