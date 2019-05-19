@@ -112,10 +112,13 @@
     </div>
   </div>  
 
-  <div class="postkomen">
-    <img src="/img/user.jpg" style="width: 10%;"></br>
-    Maulana 
-    <br>" kontol "
+  <div class="postkomen" style="height: 20%; top: 90%">
+    <img src="/img/user.jpg" style="position: absolute; z-index: 2; width: 10%; left: 2%; top: 10%;"> 
+    <p style="position: absolute; z-index: 2; top: 20%; left: 15%">Maulana</p> 
+    <p style="position: absolute; z-index: 2; top: 32%; left: 15%">13 mei 2011</p> 
+    <div style="background-color: white; width: 96%; height: 40%; position: absolute; z-index: 2; top: 55%; left: 2%">
+      
+    </div>
   </div>
 
 </body>

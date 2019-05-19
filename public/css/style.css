@@ -580,14 +580,9 @@
         background-color: #354847;
         color: white;
         font-family: 'Nunito', sans-serif;
-        font-weight: bold;
         text-decoration: none;
-        border: 0px solid;
-        padding: 10px;
-        font-size: 110%;
-        box-shadow: 6px 6px #EFC113;        
-        text-align: center;
-        width: 40%;
+        background-image: linear-gradient(to right, #354857 , #19354B);
+        width: 44%;
         top: 70%;
         z-index: 2; 
         position: absolute;
