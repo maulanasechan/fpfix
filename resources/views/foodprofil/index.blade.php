@@ -9,24 +9,36 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
+{{-- @if (session('success'))
+    <div class="alert alert-success col-sm-12">
+        {{ session('success') }}
+    </div>
+  @endif
+  @if (session('error'))
+    <div class="alert alert-danger col-sm-12">
+        {{ session('error') }}
+    </div>
+  @endif --}}
 <body>
+    
   <img src="/img/mppl11.png" class="login-img9">  
       <img src="/img/mppl12.png" class="login-img10">
       <img src="/img/mppl12.png" class="login-img11"> 
       <img src="/img/mppl13.png" class="login-img12"> 
       <img src="/img/mppl15.png" class="login-img15">
-      <p class="judul" style="top: 20%">Pecel Bu Nanik</p>
+      <p class="judul" style="top: 20%">{{$barang->nama_barang}}</p>
       <img class="cropprof"  src="/img/Resep-pecel.jpg" style="left: 30%">      
       <div class="box">
-        Harga :
+        Harga : {{$barang->harga}}
       </div>
       <div class="box" style="top: 41%">
-        Deskripsi :
+        Deskripsi : {{$barang->deskripsi}}
       </div>
       <div class="box" style="top: 48%">
-        Nama Penjual :
+        Nama Penjual : ??
       </div>
-      <p class="rating" style="top: 56%">Rating 8 from 10</p>
+      <p class="rating" style="top: 56%">Rating {{$rating}} from 5</p>
+      <p class="rating" style="top: 58%">Your rating : {{$rate}}</p>
       <button class="komen" style="right: 35%" data-toggle="modal" data-target="#myModal">
         Rate it
       </button>
@@ -57,23 +69,24 @@
           <h4 class="modal-title" style="color: #354857">Rate This Food</h4>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('marketplace.store') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('foodprofil.rate') }}" enctype="multipart/form-data">
             @csrf
-            <button class="komen" value="1" style="background-color: #EFC113; left: 2%;">
+            <button class="komen" name="rate" value="1" style="background-color: #EFC113; left: 2%;">
               Sangat Buruk
             </button>
-            <button class="komen" value="1" style="background-color: #EFC113; left: 18.5%">
+            <button class="komen" name="rate" value="2" style="background-color: #EFC113; left: 18.5%">
               Buruk
             </button>
-            <button class="komen" value="1" style="background-color: #EFC113; left: 27.5%">
+            <button class="komen" name="rate" value="3" style="background-color: #EFC113; left: 27.5%">
               Lumayan
             </button>
-            <button class="komen" value="1" style="background-color: #EFC113; left: 39.5%">
+            <button class="komen" name="rate" value="4" style="background-color: #EFC113; left: 39.5%">
               Enak
             </button>
-            <button class="komen" value="1" style="background-color: #EFC113; left: 47.5%">
+            <button class="komen" name="rate" value="5" style="background-color: #EFC113; left: 47.5%">
               Sangat Enak
             </button>
+            <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">
           </form>
         </div>
       </div>  

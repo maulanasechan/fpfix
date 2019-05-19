@@ -33,9 +33,12 @@ Route::prefix('admin')->group(function(){
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
 
-Route::get('/foodprofil', function () {
-    return view('foodprofil.index');
-});
+// Route::get('/foodprofil', 'BarangDijualController@foodProfil');
+// Route::prefix('foodprofil')->group(function(){
+// 	Route::get('/', 'BarangDijualController@foodProfil');
+// 	Route::post('/rate', 'BarangDijualController@foodProfilRate')->name('foodprofil.rate');
+// });
+
 // Route::get('/profil', function () {
 //     return view('profil.index');
 // });
@@ -64,5 +67,9 @@ Route::prefix('marketplace')->group(function(){
 	Route::get('/dessert', 'BarangDijualController@dessert')->name('marketplace.dessert');
 	Route::get('/appetaizer', 'BarangDijualController@appetaizer')->name('marketplace.appetaizer');
 	Route::get('/maincourse', 'BarangDijualController@maincourse')->name('marketplace.maincourse');
+	Route::prefix('foodprofil')->group(function(){
+		Route::get('/{id}', 'BarangDijualController@foodProfil')->name('foodprofil');
+		Route::post('/rate', 'BarangDijualController@foodProfilRate')->name('foodprofil.rate');
+	});
 });
 Route::resource('marketplace','BarangDijualController');

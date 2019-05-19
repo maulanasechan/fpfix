@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\barang_dijual;
+use App\Rating;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Auth;
 
 class BarangDijualController extends Controller
 {
@@ -80,7 +82,7 @@ class BarangDijualController extends Controller
         $item->filename = $cover->getFilename().'.'.$extension;
         $item->save();
 
-        return redirect()->route('home')->with('success','Book added successfully...');
+        return redirect()->route('marketplace.index')->with('success','Book added successfully...');
         // return $item;
     }
 
@@ -127,5 +129,40 @@ class BarangDijualController extends Controller
     public function destroy(barang_dijual $barang_dijual)
     {
         //
+    }
+
+    public function foodProfil ($id) {
+        $barang = barang_dijual::find($id);
+        $rate = Rating::where('id_barang', $id)->where('tipe', 0)->get();
+
+        $userRate = Rating::where('id_user', Auth::user()->id)->first();
+        if (!isset($userRate)) {
+            $userRate = 0;
+        }
+        else {
+            $userRate = $userRate->rate;
+        }
+        // return $userRate;
+        $rating = $rate->sum('rate')/$rate->count() ;
+        return view('foodprofil.index')->with('barang', $barang)->with('rating', $rating)->with('rate', $userRate);
+    }
+
+    public function foodProfilRate (Request $request) {
+        $rating = Rating::where('id_user', Auth::user()->id)->first();
+        if (isset($rating)) {
+            $rating->rate = $request->rate;
+            $rating->save();
+            // return $rating;
+        }
+        else {
+            $rating = new Rating;
+            $rating->rate = $request->rate;
+            $rating->id_barang = $request->id_barang;
+            $rating->id_user = Auth::user()->id;
+            $rating->tipe = 0;
+            // return $rating;
+            $rating->save();
+        }
+        return redirect()->back();
     }
 }
