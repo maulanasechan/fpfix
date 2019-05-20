@@ -12,6 +12,6 @@ class PenjualController extends Controller
 	}
 
     public function index(){
-    	return view('penjual');
+    	return view('penjual.index');
     }
 }

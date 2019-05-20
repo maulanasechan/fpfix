@@ -15,6 +15,10 @@
         </style>
     </head>
     <body>
+
+        <img src="/img/mppl4.png" class="login-img6" style="top: 90%;">
+
+        <div class="box" style="top: 89%; border: none; left: 7%; width: 11%; text-align: center;"><a href="/penjual/login" class="userlogin" >Seller Login</a></div>
         <img src="/img/mppl1.png" class="login-img1">
         <img src="/img/mppl3.png" class="login-img2">
         <img src="/img/mppl4.png" class="login-img3">

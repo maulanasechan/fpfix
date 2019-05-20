@@ -28,7 +28,8 @@ class PenjualLoginController extends Controller
     		'email' => 'required|email',
     		'password' => 'required|min:8|confirmed',
     		'alamat' => 'required',
-            'rekening' => 'required'
+            'rekening' => 'required',
+            'atasnama' => 'required'
     	]);
         // if ($validator->fails()) {    
         //     return response()->json($validator->messages(), 200);
@@ -40,6 +41,7 @@ class PenjualLoginController extends Controller
     	$penjual->alamat = $request->alamat;
     	$penjual->avatar = $request->avatar;
         $penjual->rekening = $request->rekening;
+        $penjual->atas_nama = $request->atasnama;
         $penjual->save();
     	// $penjual->waktu_buka = NUL
     	// $penjual->waktu_tutup = \Carbon\Carbon::parse($request->waktu_tutup)->format('H:i');

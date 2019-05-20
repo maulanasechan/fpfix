@@ -153,6 +153,7 @@ class BarangDijualController extends Controller
             $rating = $rate->sum('rate')/$rate->count() ;
         }
         
+        // return $barang->penjual;
         // return $komen[0]->created_at->format('d M Y') ;
         return view('marketplace.foodprofil.index')->with('barang', $barang)->with('rating', $rating)->with('rate', $userRate)->with('komen', $komen);
     }
@@ -194,7 +195,23 @@ class BarangDijualController extends Controller
         $order->amount = $request->jumlah;
         $order->id_user = Auth::user()->id;
         $order->status = 0;
-        $order->save();
-        return Order::all();
+        // $order->save();
+        // return Order::all();
+        // return $order;
+        return view('marketplace.foodprofil.buy')->with('order', $order);
+    }
+
+    public function uploadBukti (Request $request) {
+        // return $request;
+        $order = Order::find($request->id_order);
+        $file = $request->file('bukti_pembayaran');
+        $ext = $file->getClientOriginalExtension();
+        Storage::disk('public')->put($file->getFilename().'.'.$ext,  File::get($file));
+        $order->bukti = '/storage/'.$file->getFilename().'.'.$ext;
+        $order->status = 1;
+        // $order->save()
+        
+        return $order;
+        return view('marketplace.foodprofil.buy');   
     }
 }

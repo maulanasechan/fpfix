@@ -16,7 +16,7 @@ class Penjual extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama_penjual', 'email', 'password', 'alamat', 'avatar', 'waktu_buka', 'waktu_tutup', 'rekening'
+        'nama_penjual', 'email', 'password', 'alamat', 'avatar', 'waktu_buka', 'waktu_tutup', 'rekening','atas_nama'
     ];
 
     /**
@@ -36,4 +36,8 @@ class Penjual extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function barang () {
+        return $this->hasMany('App\barang_dijual', 'id_penjual', 'id');
+    }
 }

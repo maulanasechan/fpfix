@@ -13,12 +13,15 @@
         </style>
     </head>
     <body style="background-color: #354857">
+        <img src="/img/mppl4.png" class="login-img6" style="top: 90%;">
         <img src="/img/mppl1.png" class="login-img1">
-        <img src="/img/mppl3.png" class="login-img2" style="height: 25%; top: 22%;">
+        <img src="/img/seller.png" class="login-img2" style="height: 25%; top: 32%;">
         <img src="/img/mppl4.png" class="login-img3">
         <img src="/img/mppl6.png" class="login-img4">
         <img src="/img/mppl7.png" class="login-img5">
-        <a href="/" class="login-link">Back</a>
+
+        <div class="box" style="top: 89%; border: none; left: 7%; width: 11%; text-align: center;"><a href="/" class="userlogin" >User Login</a></div>
+        <a href="/penjual/register" class="login-link">Seller register</a>
         <form method="POST" action="{{ route('penjual.login.submit') }}">
             @csrf
                 <center>
