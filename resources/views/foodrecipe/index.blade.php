@@ -19,12 +19,14 @@
         <img src="/img/mppl11.png" class="login-img9">  
         <img src="/img/mppl12.png" class="login-img10">
         <img src="/img/mppl12.png" class="login-img11"> 
-        <img src="/img/mppl13.png" class="login-img12"> 
+	<a href="/home">
+		<img src="/img/mppl13.png" class="login-img12">
+	</a>
         <img src="/img/mppl15.png" class="login-img15"> 
         
         <a href="{{ route('foodrecipe.appetaizer') }}"><img class='top-right' src="{{ asset('img/appetaizer.png') }}" style="width: auto; height: 20%; right: 64%; top: 40%;"></a>
-        <a href=""><img class='top-right' src="{{ asset('img/maincourse.png') }}" style="width: auto; height: 20%; right: 43%; top: 40%;"></a>
-        <a href=""><img class='top-right' src="{{ asset('img/dessert.png') }}" style="width: auto; height: 20%; right: 22%;
+        <a href="{{ route('foodrecipe.maincourse') }}"><img class='top-right' src="{{ asset('img/maincourse.png') }}" style="width: auto; height: 20%; right: 43%; top: 40%;"></a>
+        <a href="{{ route('foodrecipe.dessert') }}"><img class='top-right' src="{{ asset('img/dessert.png') }}" style="width: auto; height: 20%; right: 22%;
             top: 40%;"></a>
         <center><a href="/home" class="round-button-login-new" style="font-size: 100%; line-height: 400%">Back</a></center>
         <?php

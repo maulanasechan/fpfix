@@ -15,80 +15,50 @@
 </head>
 
 <body style="background-color: white">
-    <p class="judul" style="top: 21%">Market Place</p>
+	<a href="/marketplace">
+		<p class="judul" style="top: 21%; z-index: 1010;">Market Place</p>
+	</a>
     <img src="/img/mppl11.png" class="login-img9">
     <img src="/img/mppl12.png" class="login-img10">
-    <img src="/img/mppl12.png" class="login-img11">
-    <img src="/img/mppl13.png" class="login-img12">
+	<img src="/img/mppl12.png" class="login-img11">
+	<a href="/home">
+		<img src="/img/mppl13.png" class="login-img12">
+	</a>
     <img src="/img/mppl15.png" class="login-img15">
     <div class="container">
         <div class="row">
             <div class="col-md-12 main-content">
-                {{-- <div class="carousel slide multi-item-carousel" id="theCarousel">
-        <div class="carousel-inner">
-          @if(count($barang))
-            <!-- {{count($barang)}} -->
-                @foreach($barang as $b)
-                @if($loop->first)
-                <div class="item active">
-                    <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive"
-                                style="width: 100px; height: 80px; ">
-                            <p style="margin-top: 2%">Nasi komto</p>
-                            <p style="margin-top: -2%">Bu Nanik</p>
-                        </a></div>
-                </div>
-                @else
-                <div class="item">
-                    <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive"
-                                style="width: 200px; height: 80px; ">
-                            <p style="margin-top: 2%">Nasi Pecel</p>
-                            <p style="margin-top: -2%">Bu Nanik</p>
-                        </a></div>
-                </div>
-                @endif
-                @endforeach
+				
 
-                @else
-                <p class="judul">Tidak Ada Data</p>
-                @endif
-            </div>
-            <!--  Example item end -->
-
-            <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i
-                    class="glyphicon glyphicon-chevron-left"></i></a>
-            <a class="right carousel-control" href="#theCarousel" data-slide="next"><i
-                    class="glyphicon glyphicon-chevron-right"></i></a>
-        </div> --}}
-
-        <div class="owl-carousel owl-theme">
-			@if (count($barang))
+		@if (count($barang) > 0)
+			<div class="owl-carousel owl-theme">
 				@foreach ($barang as $b)
-					<div class="item">
-						
-						<a href="#1" class="mkt-list">
-							<div class="panel panel-default">
-								<div class="panel-body" style="padding: 1em 2em 1em 1em;">
+				<div class="item">
+					
+					<a href="#1" class="mkt-list">
+						<div class="panel panel-default">
+							<div class="panel-body" style="padding: 1em 2em 1em 1em;">
 									<div class="mkt-image">
 										<img src="/storage/{{$b->filename}}" class="img-responsive mkt-image">
 									</div>
-									<h4 class="text-center" style="margin-top: 2%">Nasi</h4>
-									<p class="text-center" style="margin-top: -2%">Bu Nanik</p>
+									<h4 class="text-center" style="margin-top: 2%">{{$b->nama_barang}}</h4>
+									<p class="text-center" style="margin-top: -2%">{{$b->deskripsi}}</p>
 								</div>
 							</div>
 						</a>
 					</div>
 				@endforeach
 				
-			@else
-            	<p class="judul">Tidak Ada Data</p>
-			@endif
-
-		</div>
+			</div>
 		<div class="owl-theme">
 			<div class="owl-controls">
 				<div class="custom-nav owl-nav"></div>
 			</div>
 		</div>
+		@else
+		<p class="judul">Tidak Ada Data</p>
+			@endif
+
 		
     </div>
     </div>
@@ -135,16 +105,19 @@
 				'<i class="fas fa-angle-right"></i>'
 			],
 			navContainer: '.main-content .custom-nav',
-    		stagePadding: 50,
+			stagePadding: 50,
+			merge: true,
             responsive: {
                 0: {
                     items: 1
                 },
 				600:{
-					items:3
+					items:3,
+        		    mergeFit:true
 				},    
                 1000: {
-                    items: 3
+					items: 3,
+		            mergeFit:true
                 }
             }
         })

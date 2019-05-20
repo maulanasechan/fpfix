@@ -24,19 +24,22 @@ class BarangDijualController extends Controller
     public function dessert()
     {
         //
-        $barang = barang_dijual::all();
+        $barang = barang_dijual::where('tipe', 3)->get();
         return view('marketplace.dessert', compact('barang'));
     }
 
     public function appetaizer()
     {
         //
-        return view('marketplace.appetaizer');
+        $barang = barang_dijual::where('tipe', 1)->get();
+        return view('marketplace.dessert', compact('barang'));
     }
     public function maincourse()
     {
         //
-        return view('marketplace.maincourse');
+        $barang = barang_dijual::where('tipe', 2)->get();
+        // dd($barang);
+        return view('marketplace.dessert', compact('barang'));
     }
     /**
      * Show the form for creating a new resource.
@@ -81,6 +84,8 @@ class BarangDijualController extends Controller
         $item->save();
 
         return redirect()->route('home')->with('success','Book added successfully...');
+        
+        // return redirect()->back()->with('success','Book added successfully...');
         // return $item;
     }
 

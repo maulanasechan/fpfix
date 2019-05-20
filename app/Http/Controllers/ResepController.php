@@ -24,19 +24,22 @@ class ResepController extends Controller
     public function dessert()
     {
         //
-        return view('foodrecipe.dessert');
+        $barang = [];
+        return view('foodrecipe.appetaizer', compact('barang'));
     }
 
     public function maincourse()
     {
         //
-        return view('foodrecipe.maincourse');
+        $barang = [];
+        return view('foodrecipe.appetaizer', compact('barang'));
     }
 
     public function appetaizer()
     {
         //
-        return view('foodrecipe.appetaizer');
+        $barang = [];
+        return view('foodrecipe.appetaizer', compact('barang'));
     }
 
     /**

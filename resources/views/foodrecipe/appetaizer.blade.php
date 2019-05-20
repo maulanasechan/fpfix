@@ -10,16 +10,52 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: white">
-<p class="judul" style="top: 21%">Food Recipe</p>
+  <a href="/foodrecipe">
+    <p class="judul" style="top: 21%; z-index: 1010;">Food Recipe</p>
+
+  </a>
 <img src="/img/mppl11.png" class="login-img9">  
 <img src="/img/mppl12.png" class="login-img10">
 <img src="/img/mppl12.png" class="login-img11"> 
-<img src="/img/mppl13.png" class="login-img12"> 
+	<a href="/home">
+		<img src="/img/mppl13.png" class="login-img12">
+	</a>
 <img src="/img/mppl15.png" class="login-img15"> 
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="carousel slide multi-item-carousel" id="theCarousel">
+
+      
+		@if (count($barang) > 0)
+			<div class="owl-carousel owl-theme">
+				@foreach ($barang as $b)
+					<div class="item">
+						
+						<a href="#1" class="mkt-list">
+							<div class="panel panel-default">
+								<div class="panel-body" style="padding: 1em 2em 1em 1em;">
+									<div class="mkt-image">
+										<img src="/storage/{{$b->filename}}" class="img-responsive mkt-image">
+									</div>
+									<h4 class="text-center" style="margin-top: 2%">Nasi</h4>
+									<p class="text-center" style="margin-top: -2%">Bu Nanik</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				@endforeach
+				
+			</div>
+		<div class="owl-theme">
+			<div class="owl-controls">
+				<div class="custom-nav owl-nav"></div>
+			</div>
+		</div>
+		@else
+		<p class="judul">Tidak Ada Data</p>
+			@endif
+
+      {{-- <div class="carousel slide multi-item-carousel" id="theCarousel">
         <div class="carousel-inner">
           <div class="item active">
             <div class="col-xs-4"><a href="#1"><img src="/img/Resep-Pecel.jpg" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
@@ -50,7 +86,7 @@
         </div>
         <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
         <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-      </div>
+      </div> --}}
     </div>
   </div>
 </div>
