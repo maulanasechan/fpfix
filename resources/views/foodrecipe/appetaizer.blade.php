@@ -24,11 +24,11 @@
           @foreach( $resep as $item)
           @if ($loop->first)
           <div class="item active">
-            <div class="col-xs-4"><a href="#1"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
+            <div class="col-xs-4"><a href="resepprofil/{{$item->id_resep}}"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
           </div>
           @else
           <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
+            <div class="col-xs-4"><a href="resepprofil/{{$item->id_resep}}"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
           </div>
           @endif
           @endforeach

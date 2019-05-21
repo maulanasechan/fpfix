@@ -47,7 +47,12 @@
             <td>{{$u->rekening}}</td>
             <td>{{$u->atas_nama}}</td>
 		        <td>{{$u->created_at}}</td>
-		        <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button></td>
+		        <form method="POST" action="{{route('admin.deleteItem')}}">
+              @csrf
+                  <input type="hidden" name="table" value="8">
+                  <input type="hidden" name="id" value="{{$u->id}}">
+                <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button></td>  
+            </form>
 		      </tr>      
       		@endforeach
       	@else

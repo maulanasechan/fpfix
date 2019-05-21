@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Auth;
 use App\Komen;
 use App\Order;
+use App\Report;
 
 class BarangDijualController extends Controller
 {
@@ -162,7 +163,7 @@ class BarangDijualController extends Controller
 
     public function foodProfilRate (Request $request) {
         // return $request;
-        $rating = Rating::where('id_user', Auth::user()->id)->where('id_barang', $request->id_barang)->first();
+        $rating = Rating::where('id_user', Auth::user()->id)->where('id_barang', $request->id_barang)->where('tipe', 0)->first();
         if (isset($rating)) {
             $rating->rate = $request->rate;
             $rating->save();
@@ -190,6 +191,17 @@ class BarangDijualController extends Controller
         $komen->tipe = 0;
         $komen->save();
         return redirect()->back();
+    }
+
+    public function foodProfilReport(Request $request) {
+        // return $request;
+            $report = new Report;
+            $report->id_user = Auth::user()->id;
+            $report->id_barang = $request->id_barang;
+            $report->report = $request->report;
+            $report->tipe = 0;
+            $report->save();
+            return redirect()->back();
     }
 
     public function buyFood (Request $request) {

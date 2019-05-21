@@ -8,6 +8,8 @@ use Auth;
 use Hash;
 use App\barang_dijual;
 use App\User;
+use App\Order;
+use App\Rating;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -102,5 +104,54 @@ class UserController extends Controller
         // return back()
         //     ->with('success','You have successfully upload image.');
 
+    }
+
+    public function list() {
+
+        $order = Order::where('id_user', Auth::user()->id)->get();
+        // return $order[0]->barang_dijual;
+        return view('profil.list')->with('order', $order);
+    }
+
+    public function detail($id) {
+        $order = Order::find($id);
+        
+        $rate = Rating::where('id_barang', $order->barang_dijual->id_barang)->where('tipe', 0)->get();
+
+        // return $id;
+
+        // return $userRate;
+        if (!isset($rate[0])) {
+            $rating = 0 ;
+        } 
+        else {
+            $rating = $rate->sum('rate')/$rate->count() ;
+        }
+
+        return view('profil.detail')->with('order', $order)->with('rating', $rating);
+    }
+
+    public function uploadBukti (Request $request) {
+        // return $request;
+        $order = Order::find($request->id_order);
+        $file = $request->file('bukti_pembayaran');
+        $ext = $file->getClientOriginalExtension();
+        Storage::disk('public')->put($file->getFilename().'.'.$ext,  File::get($file));
+        $order->bukti = '/storage/'.$file->getFilename().'.'.$ext;
+        // $order->status = 1;
+        $order->save();
+        
+        // return $order;
+        return redirect()->route('profil.list');   
+    }
+
+    public function barangDiterima (Request $request) {
+
+        $order = Order::find($request->id);
+        if (isset($order->bukti) && isset($order->resi)) {
+            $order->status = 1;
+            $order->save();
+        }
+        return redirect()->back();
     }
 }
