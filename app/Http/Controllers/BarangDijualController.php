@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Auth;
 use App\Komen;
 use App\Order;
+use App\Report;
 
 class BarangDijualController extends Controller
 {
@@ -138,7 +139,9 @@ class BarangDijualController extends Controller
         $komen = Komen::where('id_barang', $id)->where('tipe', 0)->get();
         $rate = Rating::where('id_barang', $id)->where('tipe', 0)->get();
 
-        $userRate = Rating::where('id_user', Auth::user()->id)->first();
+        // return $id;
+
+        $userRate = Rating::where('id_user', Auth::user()->id)->where('id_barang', $id)->first();
         if (!isset($userRate)) {
             $userRate = 0;
         }
@@ -159,7 +162,8 @@ class BarangDijualController extends Controller
     }
 
     public function foodProfilRate (Request $request) {
-        $rating = Rating::where('id_user', Auth::user()->id)->first();
+        // return $request;
+        $rating = Rating::where('id_user', Auth::user()->id)->where('id_barang', $request->id_barang)->where('tipe', 0)->first();
         if (isset($rating)) {
             $rating->rate = $request->rate;
             $rating->save();
@@ -189,13 +193,24 @@ class BarangDijualController extends Controller
         return redirect()->back();
     }
 
+    public function foodProfilReport(Request $request) {
+        // return $request;
+            $report = new Report;
+            $report->id_user = Auth::user()->id;
+            $report->id_barang = $request->id_barang;
+            $report->report = $request->report;
+            $report->tipe = 0;
+            $report->save();
+            return redirect()->back();
+    }
+
     public function buyFood (Request $request) {
         $order = new Order;
         $order->id_barang = $request->id_barang;
         $order->amount = $request->jumlah;
         $order->id_user = Auth::user()->id;
         $order->status = 0;
-        // $order->save();
+        $order->save();
         // return Order::all();
         // return $order;
         return view('marketplace.foodprofil.buy')->with('order', $order);
@@ -209,9 +224,9 @@ class BarangDijualController extends Controller
         Storage::disk('public')->put($file->getFilename().'.'.$ext,  File::get($file));
         $order->bukti = '/storage/'.$file->getFilename().'.'.$ext;
         $order->status = 1;
-        // $order->save()
+        $order->save();
         
-        return $order;
-        return view('marketplace.foodprofil.buy');   
+        // return $order;
+        return redirect()->route('marketplace.index');   
     }
 }

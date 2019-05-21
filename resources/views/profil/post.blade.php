@@ -50,7 +50,9 @@
             @endforeach
             
           @else
-            <p class="judul">Tidak Ada Data</p>
+            <div class="item active">
+              <div class="col-xs-4" style="padding: 5%;"><p style="margin-top: 2%">Anda Tidak Memiliki Resep</p></div>
+             </div>
           @endif
           </div>       
           <!--  Example item end -->
@@ -66,6 +68,8 @@
 <p  class="home-link2" style="top: 40%; font-size: 120%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);"><?php echo $user->alamat; ?></p>
 
 <a href="/profil/edit" class="home-link" style="top: 47%; font-size: 150%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">Edit Profile</a>
+
+<a href="/profil/list" class="home-link" style="top: 52%; font-size: 150%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">List Order</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout">{{ __('Logout') }}</button>

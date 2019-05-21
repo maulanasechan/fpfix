@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class resep extends Model
+class Report extends Model
 {
-	protected $primaryKey = 'id_resep';
-	
+    protected $table = 'report';
+
     public function user() {
     	return $this->belongsTo('App\User', 'id_user', 'id');
     }
-
 }

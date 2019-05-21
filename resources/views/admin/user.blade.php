@@ -39,7 +39,12 @@
 		        <td>{{$u->alamat}}</td>
 		        <td>{{$u->avatar}}</td>
 		        <td>{{$u->created_at}}</td>
-		        <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button>
+		        <form method="POST" action="{{route('admin.deleteItem')}}">
+              @csrf
+                  <input type="hidden" name="table" value="7">
+                  <input type="hidden" name="id" value="{{$u->id}}">
+                <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button></td>  
+            </form>
 </td>
 		      </tr>      
       		@endforeach
