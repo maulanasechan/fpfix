@@ -36,27 +36,27 @@ class AdminController extends Controller
     }
 
     public function userTable(){
-        $user = User::all();
+        $user = User::all()::paginate(5);
         return view('admin.user')->with('user', $user);
     }
 
     public function penjualTable(){
-        $penjual = Penjual::all();
+        $penjual = Penjual::all()::paginate(5);
         return view('admin.penjual')->with('penjual', $penjual);
     }
 
     public function ratingTable(){
-        $rating = Rating::all();
+        $rating = Rating::all()::paginate(5);
         return view('admin.rating')->with('rating',$rating);
     }
 
     public function komentarTable(){
-        $komentar = Komen::all();
+        $komentar = Komen::all()::paginate(5);
         return view('admin.komentar')->with('komentar',$komentar);
     }
 
     public function reportTable(){
-        $report = Report::all();
+        $report = Report::all()::paginate(5);
         return view('admin.report')->with('report',$report);
     }
 
@@ -66,12 +66,12 @@ class AdminController extends Controller
     }
 
     public function marketplaceTable(){
-        $marketplace = barang_dijual::all();
+        $marketplace = barang_dijual::paginate(5);
         return view('admin.marketplace')->with('marketplace',$marketplace);
     }
 
     public function foodrecipeTable(){
-        $foodrecipe = resep::all();
+        $foodrecipe = resep::paginate(5);
         return view('admin.foodrecipe')->with('foodrecipe',$foodrecipe);
     }
 

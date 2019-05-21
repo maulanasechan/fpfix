@@ -63,6 +63,7 @@ class PenjualLoginController extends Controller
     	
     	if (Auth::guard('penjual')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
     	{
+            // return Auth::user();
     		return redirect()->intended(route('penjual.dashboard')) ;
     	}
     	

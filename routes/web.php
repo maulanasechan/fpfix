@@ -47,12 +47,11 @@ Route::prefix('penjual')->group(function(){
 	Route::post('/register', 'Auth\PenjualLoginController@register')->name('penjual.register.submit');
 	Route::get('/login', 'Auth\PenjualLoginController@showLoginForm')->name('penjual.login');
 	Route::post('/login', 'Auth\PenjualLoginController@login')->name('penjual.login.submit');
-	Route::get('/logout', 'Auth\PenjualLoginController@logout')->name('penjual.logout');
-	
+	Route::post('/logout', 'Auth\PenjualLoginController@logout')->name('penjual.logout');
+	Route::get('/order', 'PenjualController@order')->name('penjual.order');
+	Route::get('/product', 'PenjualController@product')->name('penjual.product');
 	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
-	
-	Route::resource('product','ProductController');
-	Route::resource('order','OrderController');
+	Route::post('/deleteItem', 'PenjualController@deleteItem')->name('penjual.deleteItem');
 });
 
 // Route::get('/foodprofil', 'BarangDijualController@foodProfil');

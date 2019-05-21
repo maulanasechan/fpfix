@@ -22,25 +22,16 @@
           </style>
     </head>
     <body style="background-color: white">
-        <?php 
-            $username = Auth::user()->username; 
-            $email = Auth::user()->email; 
-            $alamat = Auth::user()->alamat; 
-            $avatar = Auth::user()->avatar;
-          ?>
         <img src="/img/mppl11.png" class="login-img9">  
         <img src="/img/mppl12.png" class="login-img10">
         <img src="/img/mppl12.png" class="login-img11"> 
         <img src="/img/mppl13.png" class="login-img12">
-        <img src="/img/mppl15.png" class="login-img15"> 
         <a href="/foodrecipe/appetaizer" class="logout" style="top: 80%;">Back</a>
         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
             @csrf
             <button type="submit" class="logout">{{ __('Logout') }}</button>
         </form>
         
-        <img class="crop" src=<?php echo $avatar ?>>
-        <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
         <p class="judul">Add Product</p>
         <form method="POST" action="{{ route('marketplace.store') }}" enctype="multipart/form-data">
             @csrf
@@ -48,7 +39,7 @@
                 $id = 1;  
             ?>
             <input type="text" name="nama_barang" placeholder="Nama Barang" style="top: 40%; height: 7%">
-            <input type="hidden" name="id_penjual" value= <?php echo $id; ?> >
+            <input type="hidden" name="id_penjual" value= "{{Auth::guard('penjual')->user()->id}}">
             <input type="text" name="deskripsi" placeholder="Deskripsi Barang" style="top: 48%; height: 7%">
             <select name="tipe" style="top: 56%; height: 7%">
               <option value="1">Appetaizer</option>
