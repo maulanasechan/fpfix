@@ -19,32 +19,23 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="carousel slide multi-item-carousel" id="theCarousel">
+      <div class="carousel slide multi-item-carousel" id="theCarousel" style="padding: 0px 100px">
         <div class="carousel-inner">
+          @foreach( $resep as $item)
+          @if ($loop->first)
           <div class="item active">
-            <div class="col-xs-4"><a href="#1"><img src="/img/Resep-Pecel.jpg" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
+            <div class="col-xs-4"><a href="#1"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
           </div>
+          @else
           <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/e91e63/000000" class="img-responsive"></a></div>
+            <div class="col-xs-4"><a href="#1"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
           </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/9c27b0/000000" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/673ab7/000000" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/4caf50/000000" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive"></a></div>
-          </div>
+          @endif
+          @endforeach
+
+          
           <!-- add  more items here -->
           <!-- Example item start:  -->
-          
-          <div class="item">
-            <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive"></a></div>
-          </div>
           
           <!--  Example item end -->
         </div>

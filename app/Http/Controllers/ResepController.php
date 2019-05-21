@@ -38,8 +38,9 @@ class ResepController extends Controller
 
     public function appetaizer()
     {
-        //
-        return view('foodrecipe.appetaizer');
+        $resep = resep::where('tipe', 1)->get();
+        // return $resep[0]->user;
+        return view('foodrecipe.appetaizer')->with('resep', $resep);
     }
 
     /**
@@ -72,7 +73,7 @@ class ResepController extends Controller
         
         $cover = $request->file('cover');
         $extension = $cover->getClientOriginalExtension();
-        // Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+        Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
 
         $item = new resep;
         $item->id_user = Auth::user()->id;
@@ -102,7 +103,7 @@ class ResepController extends Controller
         //         'resep' => $item,
         //         'langkah' => Langkah::where('id_resep', $item->id)->get(),
         // ];
-        return $item ;
+        return redirect()->route('foodrecipe.appetaizer') ;
     }
 
     /**

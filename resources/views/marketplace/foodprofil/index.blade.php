@@ -176,6 +176,7 @@
     </div>
   </div> 
   <!-- <p class="judul" style="top: 85%">Komentar</p> -->
+  <<?php $s = 92; ?>
   @foreach ($komen as $item)
   <div class="postkomen" style="height: 20%; top: {{92+($loop->index*25)}}%">
     <?php $s = 92+($loop->index*25); ?>

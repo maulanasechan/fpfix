@@ -49,6 +49,7 @@ Route::prefix('penjual')->group(function(){
 	Route::get('/logout', 'Auth\PenjualLoginController@logout')->name('penjual.logout');
 	
 	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
+	
 	Route::resource('product','ProductController');
 	Route::resource('order','OrderController');
 });
