@@ -42,27 +42,24 @@
         <img class="crop" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
         <p class="judul" style="top: 6.5%; font-size: 250%">Add Recipe</p>
-        <form method="POST" action="{{ route('marketplace.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('foodrecipe.store') }}" enctype="multipart/form-data">
             @csrf
-            <?php 
-                $id = 1;  
-            ?>
-            <input type="text" name="nama_makanan" placeholder="Nama Makanan" style="top: 20%; height: 6%">
-            <input type="hidden" name="id_penjual" value= <?php echo $id; ?> >
-            <input type="text" name="deskripsi" placeholder="Deskripsi Makanan" style="top: 26.5%; height: 6%">
-            <input type="text" name="alat" placeholder="Alat" style="top: 33%; height: 6%">
-            <input type="text" name="bahan" placeholder="Bahan" style="top: 39.5%; height: 6%">
+            
+            <input type="text" name="nama_makanan" placeholder="Nama Makanan" style="top: 20%; height: 6%" required>
+            <input required type="text" name="deskripsi" placeholder="Deskripsi Makanan" style="top: 26.5%; height: 6%">
+            <input type="text" required name="alat" placeholder="Alat" style="top: 33%; height: 6%">
+            <input type="text" required name="bahan" placeholder="Bahan" style="top: 39.5%; height: 6%">
             <select name="tipe" style="top: 46%; height: 6%">
               <option value="1">Appetaizer</option>
               <option value="2">Main Course</option>
               <option value="3">Dessert</option>
             </select>
-            <input type="text" name="langkah" placeholder="Langkah 1" style="top: 52.5%; height: 6%">
-            <input type="text" name="langkah" placeholder="Langkah 2" style="top: 59%; height: 6%">
-            <input type="text" name="langkah" placeholder="Langkah 3" style="top: 65.5%; height: 6%">
-            <input type="text" name="langkah" placeholder="Langkah 4" style="top: 72%; height: 6%">
-            <input type="text" name="langkah" placeholder="Langkah 5" style="top: 78.5%; height: 6%">
-            <input type="file" name="cover" class="avatar" style="top: 84%">
+            <input type="text" name="langkah[]" placeholder="Langkah 1" style="top: 52.5%; height: 6%">
+            <input type="text" name="langkah[]" placeholder="Langkah 2" style="top: 59%; height: 6%">
+            <input type="text" name="langkah[]" placeholder="Langkah 3" style="top: 65.5%; height: 6%">
+            <input type="text" name="langkah[]" placeholder="Langkah 4" style="top: 72%; height: 6%">
+            <input type="text" name="langkah[]" placeholder="Langkah 5" style="top: 78.5%; height: 6%">
+            <input required type="file" name="cover" class="avatar" style="top: 84%">
             <center>
                 <button type="submit" class="round-button-login-new" style="top: 90%; width: 5%; height: 10%">Post</button>
             </center>

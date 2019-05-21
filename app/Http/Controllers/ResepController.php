@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\resep;
+use App\Langkah;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+
+use Auth;
 
 class ResepController extends Controller
 {
@@ -65,24 +68,41 @@ class ResepController extends Controller
         //     'cover' => 'required',
             
         // ]);
-        // return 'hoohoasoh' ;
+        // return $request ;
+        
         $cover = $request->file('cover');
         $extension = $cover->getClientOriginalExtension();
-        Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+        // Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
 
-        $item = new barang_dijual();
-        $item->nama_barang = $request->nama_barang;
-        $item->id_penjual = $request->id_penjual;
-        $item->harga = $request->harga;
+        $item = new resep;
+        $item->id_user = Auth::user()->id;
+        $item->nama_makanan = $request->nama_makanan;
+        $item->bahan = $request->bahan;
+        $item->peralatan = $request->alat;
         $item->tipe = $request->tipe;
         $item->deskripsi = $request->deskripsi;
-        $item->mime = $cover->getClientMimeType();
-        $item->original_filename = $cover->getClientOriginalName();
         $item->filename = $cover->getFilename().'.'.$extension;
+        
+        
+
         $item->save();
 
+        foreach ($request->langkah as $step) {
+                
+                $langkah = new Langkah;
+                $langkah->id_user = Auth::user()->id;
+                $langkah->id_resep = $item->id;
+                $langkah->langkah = $step;
+                // return $langkah;
+                $langkah->save();
+        }
+
         // return redirect()->route('home')->with('success','Book added successfully...');
-        return $item;
+        // $return = [
+        //         'resep' => $item,
+        //         'langkah' => Langkah::where('id_resep', $item->id)->get(),
+        // ];
+        return $item ;
     }
 
     /**

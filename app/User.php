@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function komen () {
         return $this->hasMany('App\komen', 'id_user');
     }
+
+    public function order () {
+        return $this->hasMany('App\order', 'id_user');
+    }
 }

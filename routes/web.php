@@ -29,6 +29,14 @@ Route::post('/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 Route::prefix('admin')->group(function(){
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+	Route::get('/user', 'AdminController@userTable')->name('admin.user');
+	Route::get('/penjual', 'AdminController@penjualTable')->name('admin.penjual');
+	Route::get('/rating', 'AdminController@ratingTable')->name('admin.rating');
+	Route::get('/komentar', 'AdminController@komentarTable')->name('admin.komentar');
+	Route::get('/report', 'AdminController@reportTable')->name('admin.report');
+	Route::get('/marketplace', 'AdminController@marketplaceTable')->name('admin.marketplace');
+	Route::get('/foodrecipe', 'AdminController@foodrecipeTable')->name('admin.foodrecipe');
+	Route::get('/transaksi', 'AdminController@transaksiTable')->name('admin.transaksi');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
@@ -38,8 +46,11 @@ Route::prefix('penjual')->group(function(){
 	Route::post('/register', 'Auth\PenjualLoginController@register')->name('penjual.register.submit');
 	Route::get('/login', 'Auth\PenjualLoginController@showLoginForm')->name('penjual.login');
 	Route::post('/login', 'Auth\PenjualLoginController@login')->name('penjual.login.submit');
-	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
 	Route::get('/logout', 'Auth\PenjualLoginController@logout')->name('penjual.logout');
+	
+	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
+	Route::resource('product','ProductController');
+	Route::resource('order','OrderController');
 });
 
 // Route::get('/foodprofil', 'BarangDijualController@foodProfil');
@@ -80,6 +91,12 @@ Route::prefix('marketplace')->group(function(){
 		Route::get('/{id}', 'BarangDijualController@foodProfil')->name('foodprofil');
 		Route::post('/rate', 'BarangDijualController@foodProfilRate')->name('foodprofil.rate');
 		Route::post('/komen', 'BarangDijualController@foodProfilKomen')->name('foodprofil.komen');
+		Route::post('/buy', 'BarangDijualController@buyFood')->name('buyFood');
+		Route::post('/uploadBukti', 'BarangDijualController@uploadBukti')->name('uploadBukti');
 	});
 });
 Route::resource('marketplace','BarangDijualController');
+
+Route::get('/profil/list', function () {
+    return view('profil.list');
+});
