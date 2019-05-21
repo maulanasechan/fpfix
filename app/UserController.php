@@ -32,4 +32,10 @@ class UserController extends Model
             ->with('success','You have successfully upload image.');
 
     }
+
+    public function list()
+    {
+        $user = Auth::user();
+        return view('profile',compact('user',$user));
+    }
 }

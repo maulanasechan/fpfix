@@ -331,6 +331,19 @@
       color: black;
     }
 
+    .userlogin{
+        text-decoration: none;
+        color: #EFC113;
+        font-weight: 600;
+        font-size: 130%;
+        line-height: 10px
+    }
+
+    .userlogin:hover{
+        color: white;
+        font-size: 150%;
+    }
+
     .register-link{
         text-decoration: none;
         color: #EFC113;
@@ -680,3 +693,29 @@ a.mkt-list .panel:hover {
     top: 1em;
     left: 1em;
 }
+    .postkomen{
+        background-color: #354847;
+        color: white;
+        font-family: 'Nunito', sans-serif;
+        text-decoration: none;
+
+        background-image: linear-gradient(to right, #354857 , #19354B);
+        width: 44%;
+        top: 70%;
+        margin-bottom: 20px;
+
+ /*       border: 0px solid;
+        padding: 10px;
+        font-size: 110%;
+        box-shadow: 6px 6px #EFC113;        
+        text-align: center;
+        width: 40%;
+        /* top: 70%; */
+
+        z-index: 2; 
+        position: absolute;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        
+    }

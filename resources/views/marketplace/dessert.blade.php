@@ -42,7 +42,7 @@
 										<img src="/storage/{{$b->filename}}" class="img-responsive mkt-image">
 									</div>
 									<h4 class="text-center" style="margin-top: 2%">{{$b->nama_barang}}</h4>
-									<p class="text-center" style="margin-top: -2%">{{$b->deskripsi}}</p>
+									<p class="text-center" style="margin-top: -2%">{{$b->nama_penjual}}</p>
 								</div>
 							</div>
 						</a>

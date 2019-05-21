@@ -17,9 +17,9 @@ class CreateResepsTable extends Migration
             $table->bigIncrements('id_resep');
             $table->integer('id_user');
             $table->string('nama_makanan');
+            $table->string('deskripsi');
             $table->string('bahan');
             $table->string('peralatan');
-            $table->string('langkah');
             $table->integer('tipe');            
             $table->string('filename')->nullable();
             $table->string('mime')->nullable();

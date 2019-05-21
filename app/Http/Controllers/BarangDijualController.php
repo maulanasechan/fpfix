@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\barang_dijual;
+use App\Rating;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Auth;
+use App\Komen;
+use App\Order;
 
 class BarangDijualController extends Controller
 {
@@ -83,9 +87,7 @@ class BarangDijualController extends Controller
         $item->filename = $cover->getFilename().'.'.$extension;
         $item->save();
 
-        return redirect()->route('home')->with('success','Book added successfully...');
-        
-        // return redirect()->back()->with('success','Book added successfully...');
+        return redirect()->route('marketplace.index')->with('success','Book added successfully...');
         // return $item;
     }
 
@@ -132,5 +134,90 @@ class BarangDijualController extends Controller
     public function destroy(barang_dijual $barang_dijual)
     {
         //
+    }
+
+    public function foodProfil ($id) {
+        $barang = barang_dijual::find($id);
+        $komen = Komen::where('id_barang', $id)->where('tipe', 0)->get();
+        $rate = Rating::where('id_barang', $id)->where('tipe', 0)->get();
+
+        // return $id;
+
+        $userRate = Rating::where('id_user', Auth::user()->id)->where('id_barang', $id)->first();
+        if (!isset($userRate)) {
+            $userRate = 0;
+        }
+        else {
+            $userRate = $userRate->rate;
+        }
+        // return $userRate;
+        if (!isset($rate[0])) {
+            $rating = 0 ;
+        } 
+        else {
+            $rating = $rate->sum('rate')/$rate->count() ;
+        }
+        
+        // return $barang->penjual;
+        // return $komen[0]->created_at->format('d M Y') ;
+        return view('marketplace.foodprofil.index')->with('barang', $barang)->with('rating', $rating)->with('rate', $userRate)->with('komen', $komen);
+    }
+
+    public function foodProfilRate (Request $request) {
+        // return $request;
+        $rating = Rating::where('id_user', Auth::user()->id)->where('id_barang', $request->id_barang)->first();
+        if (isset($rating)) {
+            $rating->rate = $request->rate;
+            $rating->save();
+            // return $rating;
+        }
+        else {
+            $rating = new Rating;
+            $rating->rate = $request->rate;
+            $rating->id_barang = $request->id_barang;
+            $rating->id_user = Auth::user()->id;
+            $rating->tipe = 0;
+            // return $rating;
+            $rating->save();
+        }
+
+        return redirect()->back();
+    }
+
+    public function foodProfilKomen(Request $request) {
+        
+        $komen = new Komen;
+        $komen->id_user = Auth::user()->id;
+        $komen->id_barang = $request->id_barang;
+        $komen->komen = $request->komen;
+        $komen->tipe = 0;
+        $komen->save();
+        return redirect()->back();
+    }
+
+    public function buyFood (Request $request) {
+        $order = new Order;
+        $order->id_barang = $request->id_barang;
+        $order->amount = $request->jumlah;
+        $order->id_user = Auth::user()->id;
+        $order->status = 0;
+        $order->save();
+        // return Order::all();
+        // return $order;
+        return view('marketplace.foodprofil.buy')->with('order', $order);
+    }
+
+    public function uploadBukti (Request $request) {
+        // return $request;
+        $order = Order::find($request->id_order);
+        $file = $request->file('bukti_pembayaran');
+        $ext = $file->getClientOriginalExtension();
+        Storage::disk('public')->put($file->getFilename().'.'.$ext,  File::get($file));
+        $order->bukti = '/storage/'.$file->getFilename().'.'.$ext;
+        $order->status = 1;
+        $order->save();
+        
+        // return $order;
+        return redirect()->route('marketplace.index');   
     }
 }
