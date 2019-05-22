@@ -37,5 +37,14 @@ class PenjualController extends Controller
 		}
         return redirect()->back();
     }
+
+    public function update(Request $request){
+        $product = barang_dijual::find($request->id);
+        return view('penjual.update')->with('product',$product);
+    }
+
+    public function editStore(Request $request){
+        return view('penjual.update');
+    }
 }
 

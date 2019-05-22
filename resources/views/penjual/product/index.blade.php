@@ -43,11 +43,17 @@
             <td>{{$u->tipe}}</td>
             <td><img src="/storage/{{$u->filename}}" style="width: auto; height: 10%"></td>
             <td>{{$u->created_at}}</td>
+            <form method="GET" action="{{route('penjual.update')}}">
+              @csrf
+                  <input type="hidden" name="table" value="1">
+                  <input type="hidden" name="id" value="{{$u->id_barang}}">
+                <td><button class='btn btn-sm btn-danger delete-btn' type='submit' style="background-color: #354857; border : none;">Update </button></td>  
+            </form> 
             <form method="POST" action="{{route('penjual.deleteItem')}}">
               @csrf
                   <input type="hidden" name="table" value="1">
                   <input type="hidden" name="id" value="{{$u->id_barang}}">
-                <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button></td>  
+                <td><button class='btn btn-sm btn-danger delete-btn' type='submit' style="border : none;">Delete </button></td>  
             </form>
           </tr>      
           @endforeach
@@ -56,8 +62,14 @@
         @endif
     </tbody>
   </table>
+  {{$marketplace->links()}}
 </div>
 </center>
+<?php
+    $avatar = Auth::guard('penjual')->user()->avatar;
+?>
+<img class="crop" src=<?php echo $avatar ?>>
+<a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
 <a href="{{route('penjual.dashboard')}}" class="logout" style="top: 81%;">Back</a>
 <a href="{{route('marketplace.create')}}" class="logout" style="top: 74%;">Add</a>
 <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">

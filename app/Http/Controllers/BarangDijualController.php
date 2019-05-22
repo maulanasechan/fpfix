@@ -83,9 +83,9 @@ class BarangDijualController extends Controller
         $item->mime = $cover->getClientMimeType();
         $item->original_filename = $cover->getClientOriginalName();
         $item->filename = $cover->getFilename().'.'.$extension;
-        $item->save();
+        return $item;
 
-        return redirect()->route('penjual.dashboard')->with('success','Book added successfully...');
+        // return redirect()->route('penjual.dashboard')->with('success','Book added successfully...');
         // return $item;
     }
 
