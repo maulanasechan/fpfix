@@ -179,6 +179,20 @@
   
   
   <img src="/img/mppl12.png" class="login-img10" style="top : {{$s-10}}%">
+  @switch($barang->tipe)
+      @case(1)
+        <a href="/foodrecipe/appetaizer" class="logout" style="top: {{$s-8}}%;">Back</a>
+          @break
+      @case(2)
+        <a href="/foodrecipe/maincourse" class="logout" style="top: {{$s-8}}%;">Back</a>
+          @break
+      @case(2)
+        <a href="/foodrecipe/dessert" class="logout" style="top: {{$s-8}}%;">Back</a>
+          @break
+      @default
+        <a href="/foodrecipe" class="logout" style="top: {{$s-8}}%;">Back</a>
+        @break        
+  @endswitch
   <a href="/foodrecipe" class="logout" style="top: {{$s-8}}%;">Back</a>
   <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf

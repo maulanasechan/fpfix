@@ -42,7 +42,7 @@ class PenjualLoginController extends Controller
     	$penjual->alamat = $request->alamat;
     	$penjual->avatar = $request->avatar;
         $penjual->rekening = $request->rekening;
-        $penjual->atas_nama = $request->atasnama;
+        $penjual->atasnama = $request->atasnama;
         $penjual->save();
     	if (Auth::guard('penjual')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
             {

@@ -47,7 +47,7 @@
             @elseif ($u->tipe == 3)
               <td>Dessert</td>
             @endif
-            <td><img src="/storage/{{$u->filename}}" style="width: auto; height: 10%"></td>
+            <td><img src="/storage/{{$u->filename}}" style="width: auto; max-height: 50px; margin: 0 auto; display: block;"></td>
             <td>{{$u->created_at}}</td>
             <form method="GET" action="{{route('penjual.update')}}">
               @csrf

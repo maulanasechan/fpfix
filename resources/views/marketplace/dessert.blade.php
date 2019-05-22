@@ -15,7 +15,7 @@
 </head>
 
 <body style="background-color: white">
-    {{-- <a href="/marketplace">
+    <a href="/marketplace">
         <p class="judul" style="top: 21%; z-index: 1010;">Market Place</p>
     </a>
     <img src="/img/mppl11.png" class="login-img9">
@@ -33,16 +33,17 @@
                 @if (count($barang) > 0)
                 <div class="owl-carousel owl-theme">
                     @foreach ($barang as $b)
+                
                     <div class="item">
 
-                        <a href="#1" class="mkt-list">
+                        <a href="foodprofil/{{$b->id_barang}}" class="mkt-list">
                             <div class="panel panel-default">
                                 <div class="panel-body" style="padding: 1em 2em 1em 1em;">
                                     <div class="mkt-image">
                                         <img src="/storage/{{$b->filename}}" class="img-responsive mkt-image">
                                     </div>
                                     <h4 class="text-center" style="margin-top: 2%">{{$b->nama_barang}}</h4>
-                                    <p class="text-center" style="margin-top: -2%">{{$b->nama_penjual}}</p>
+                                    <p class="text-center" style="margin-top: -2%">{{$b->penjual->nama_penjual}}</p>
                                 </div>
                             </div>
                         </a>
@@ -122,74 +123,7 @@
             }
         })
 
-    </script> --}}
-<p class="judul" style="top: 21%">Appetaizer</p>
-<img src="/img/mppl11.png" class="login-img9">  
-<img src="/img/mppl12.png" class="login-img10">
-<img src="/img/mppl12.png" class="login-img11"> 
-<img src="/img/mppl13.png" class="login-img12"> 
-<img src="/img/mppl15.png" class="login-img15"> 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="carousel slide multi-item-carousel" id="theCarousel" style="padding: 0px 100px">
-        <div class="carousel-inner">
-          @if(count($resep))
-            @foreach($resep as $b)
-              @if($loop->first)
-              <div class="item active">
-              <div class="col-xs-4"><a href="resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p><p style="margin-top: -2%">{{$b->user->username}}</p></a></div>
-             </div>
-             @else
-              <div class="item">
-              <div class="col-xs-4"><a href="resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p><p style="margin-top: -2%">{{$b->user->username}}</p></a></div>
-             </div>
-             @endif
-            @endforeach
-            
-          @else
-            <p class="judul">Tidak Ada Data</p>
-          @endif
-          </div>
-        <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-        <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-<a href="{{route('foodrecipe.index')}}" class="logout" style="top: 81%;">Back</a>
-<?php
-    $avatar = Auth::user()->avatar;
-?>
-<img class="crop" src=<?php echo $avatar ?>>
-<a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
-<form id="logout-form" action="{{ route('user.logout') }}" method="POST">
-    @csrf
-    <button type="submit" class="logout">{{ __('Logout') }}</button>
-</form>
-<script type="text/javascript">
-  // Instantiate the Bootstrap carousel
-$('.multi-item-carousel').carousel({
-  interval: false
-});
-
-// for every slide in carousel, copy the next slide's item in the slide.
-// Do the same for the next, next item.
-$('.multi-item-carousel .item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
-  
-  if (next.next().length>0) {
-    next.next().children(':first-child').clone().appendTo($(this));
-  } else {
-    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-  }
-});
-</script>
-
+    </script>
 </body>
 
 </html>

@@ -31,13 +31,13 @@ class ResepController extends Controller
     public function dessert()
     {
         $resep = resep::where('tipe', 3)->get();
-        return view('foodrecipe.dessert')->with('resep', $resep);
+        return view('foodrecipe.appetaizer')->with('resep', $resep);
     }
 
     public function maincourse()
     {
         $resep = resep::where('tipe', 2)->get();
-        return view('foodrecipe.maincourse')->with('resep', $resep);
+        return view('foodrecipe.appetaizer')->with('resep', $resep);
     }
 
     public function appetaizer()
@@ -108,6 +108,7 @@ class ResepController extends Controller
         //         'resep' => $item,
         //         'langkah' => Langkah::where('id_resep', $item->id)->get(),
         // ];
+        // return $request;
         return redirect()->route('foodrecipe.index') ;
     }
 

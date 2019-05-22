@@ -36,12 +36,12 @@ class BarangDijualController extends Controller
     public function appetaizer()
     {
         $barang = barang_dijual::where('tipe', 1)->get();
-        return view('marketplace.appetaizer')->with('barang',$barang);
+        return view('marketplace.dessert')->with('barang',$barang);
     }
     public function maincourse()
     {
         $barang = barang_dijual::where('tipe', 2)->get();
-        return view('marketplace.maincourse')->with('barang',$barang);
+        return view('marketplace.dessert')->with('barang',$barang);
     }
     /**
      * Show the form for creating a new resource.
@@ -83,10 +83,11 @@ class BarangDijualController extends Controller
         $item->mime = $cover->getClientMimeType();
         $item->original_filename = $cover->getClientOriginalName();
         $item->filename = $cover->getFilename().'.'.$extension;
-        return $item;
+
+        $item->save();
+
         return redirect()->route('penjual.dashboard')->with('success','Book added successfully...');
 
-        // return $item;
     }
 
     /**

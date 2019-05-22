@@ -37,14 +37,14 @@
                     @foreach ($resep as $b)
                     <div class="item">
 
-                        <a href="#1" class="mkt-list">
+                        <a href="resepprofil/{{$b->id_resep}}" class="mkt-list">
                             <div class="panel panel-default">
                                 <div class="panel-body" style="padding: 1em 2em 1em 1em;">
                                     <div class="mkt-image">
                                         <img src="/storage/{{$b->filename}}" class="img-responsive mkt-image">
                                     </div>
-                                    <h4 class="text-center" style="margin-top: 2%">Nasi</h4>
-                                    <p class="text-center" style="margin-top: -2%">Bu Nanik</p>
+                                    <h4 class="text-center" style="margin-top: 2%">{{$b->nama_makanan}}</h4>
+                                    <p class="text-center" style="margin-top: -2%">{{$b->user->username}}</p>
                                 </div>
                             </div>
                         </a>

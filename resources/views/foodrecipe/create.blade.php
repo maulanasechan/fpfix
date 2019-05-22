@@ -73,7 +73,7 @@
         <img class="crop" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
         <p class="judul" style="top: 6.5%; font-size: 250%">Add Recipe</p>
-        {{-- <form method="POST" action="{{ route('foodrecipe.store') }}" enctype="multipart/form-data" class="inputForm">
+        <form method="POST" action="{{ route('foodrecipe.store') }}" enctype="multipart/form-data" class="inputForm">
             @csrf
             
             <input type="text" name="nama_makanan" placeholder="Nama Makanan" style="top: 20%; height: 6%" required>
@@ -94,9 +94,9 @@
             <center>
                 <button type="submit" class="round-button-login-new" style="top: 90%; width: 5%; height: 10%">Post</button>
             </center>
-        </form> --}}
+        </form>
 
-        <form method="POST" action="{{ route('foodrecipe.store') }}" enctype="multipart/form-data" class="inputForm">
+        {{-- <form method="POST" action="{{ route('foodrecipe.store') }}" enctype="multipart/form-data" class="inputForm">
             @csrf
             
             <input type="text" name="nama_makanan" placeholder="Nama Makanan" style=" height: 6%" required>
@@ -116,7 +116,7 @@
             <center>
                 <button type="submit" class="round-button-login-new" style="position: absolute; bottom: -20vh; top:auto; ;width: 5vw; height: 10vh">Post</button>
             </center>
-        </form>
+        </form> --}}
 
         <script>
             let langkah = document.getElementById('langkahTemplate');
