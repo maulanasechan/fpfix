@@ -27,15 +27,15 @@ class ResepController extends Controller
     public function dessert()
     {
         //
-        $barang = [];
-        return view('foodrecipe.appetaizer', compact('barang'));
+        $resep = resep::where('tipe', 3)->get();
+        return view('foodrecipe.appetaizer', compact('resep'));
     }
 
     public function maincourse()
     {
         //
-        $barang = [];
-        return view('foodrecipe.appetaizer', compact('barang'));
+        $resep = resep::where('tipe', 2)->get();
+        return view('foodrecipe.appetaizer', compact('resep'));
     }
 
     public function appetaizer()

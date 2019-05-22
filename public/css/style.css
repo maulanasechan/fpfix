@@ -515,7 +515,7 @@
       clear: both;
     }
 
-    .multi-item-carousel{
+    /* .multi-item-carousel{
       .carousel-inner{
         > .item{
           transition: 500ms ease-in-out left;
@@ -549,7 +549,7 @@
           background-image: none;
         }
       }
-    }
+    } */
 
     .box{
         width: 30%;
@@ -625,6 +625,7 @@
 .main-content .owl-theme .custom-nav .owl-next i {
     font-size: 4rem;
     color: #354857;
+    /* line-height: 4em; */
 }
 
 .main-content .owl-theme .custom-nav .owl-prev {
