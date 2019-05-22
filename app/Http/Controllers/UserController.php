@@ -10,6 +10,7 @@ use App\barang_dijual;
 use App\User;
 use App\Order;
 use App\Rating;
+use App\resep;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -26,7 +27,7 @@ class UserController extends Controller
     public function post()
     {   
         $user = Auth::user();
-        $barang = barang_dijual::all(); //ganti resep
+        $barang = resep::where('id_user',$user->id)->get(); //ganti resep
         return view('profil.post', compact('user','barang'));
     }
     

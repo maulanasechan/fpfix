@@ -86,16 +86,17 @@ class ResepController extends Controller
         $item->tipe = $request->tipe;
         $item->deskripsi = $request->deskripsi;
         $item->filename = $cover->getFilename().'.'.$extension;
-        
+        // return $item;
         
 
         $item->save();
+        // return $item;
 
         foreach ($request->langkah as $step) {
                 
                 $langkah = new Langkah;
                 $langkah->id_user = Auth::user()->id;
-                $langkah->id_resep = $item->id;
+                $langkah->id_resep = $item->id_resep;
                 $langkah->langkah = $step;
                 // return $langkah;
                 $langkah->save();
@@ -106,7 +107,7 @@ class ResepController extends Controller
         //         'resep' => $item,
         //         'langkah' => Langkah::where('id_resep', $item->id)->get(),
         // ];
-        return redirect()->route('foodrecipe.appetaizer') ;
+        return redirect()->route('foodrecipe.index') ;
     }
 
     /**
