@@ -50,7 +50,7 @@ class BarangDijualController extends Controller
      */
     public function create()
     {
-        //
+        // return Auth::guard('penjual')->user;
         return view('marketplace.create');
     }
 
@@ -85,7 +85,7 @@ class BarangDijualController extends Controller
         $item->filename = $cover->getFilename().'.'.$extension;
         $item->save();
 
-        return redirect()->route('marketplace.index')->with('success','Book added successfully...');
+        return redirect()->route('penjual.product')->with('success','Book added successfully...');
         // return $item;
     }
 

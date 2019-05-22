@@ -37,7 +37,7 @@ class Penjual extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function barang () {
+    public function barang_dijual () {
         return $this->hasMany('App\barang_dijual', 'id_penjual', 'id');
     }
 }

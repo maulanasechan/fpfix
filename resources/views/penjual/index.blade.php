@@ -1,39 +1,40 @@
-@extends('penjual.layout')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">Product</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="/penjual/product">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">Order</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="/penjual/order">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          
-        </div>
-@endsection
+        <title>Seller page</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+        <!-- Styles -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <style type="text/css">
+            .logout {
+                top: 3px;
+            }
+            .chat {
+                top: 3px;
+                right: 62px;
+            }
+        </style>
+    </head>
+    <body style="background-color: white">
+        <img src="/img/mppl11.png" class="login-img9">  
+        <img src="/img/mppl12.png" class="login-img10">
+        <img src="/img/mppl12.png" class="login-img11"> 
+        <img src="/img/mppl13.png" class="login-img12"> 
+        <img src="/img/mppl14.png" class="login-img13">
+        <img src="/img/mppl15.png" class="login-img14">
+        <img src="/img/mppl15.png" class="login-img15">     
+        <a href="{{ url('penjual/product') }}" class="home-link" style="word-spacing: 50px; ">List Product</a>
+        <a href="{{ url('penjual/order') }}" class="home-link" style="left: 50%; top: 60%; word-spacing: 50px;">List Order</a>
+        <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="home-login-button">{{ __('Logout') }}</button>
+        </form>
+    </body>
+</html>
+
