@@ -24,6 +24,7 @@ class CreatePenjualsTable extends Migration
             $table->timestamp('waktu_buka')->nullable();
             $table->timestamp('waktu_tutup')->nullable();
             $table->string('rekening');
+            $table->string('atasnama');
             $table->timestamps();
         });
     }

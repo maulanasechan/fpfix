@@ -26,7 +26,7 @@
         <th>Deskripsi</th>
         <th>Harga</th>
         <th>Tipe</th>
-        <th>Filename</th>
+        <th>Gambar Produk</th>
         <th>Created At</th>
         <th>Menu</th>
       </tr>
@@ -40,9 +40,15 @@
             <td>{{$u->nama_barang}}</td>
             <td>{{$u->deskripsi}}</td>
             <td>{{$u->harga}}</td>
-            <td>{{$u->tipe}}</td>
+            @if ($u->tipe == 1)
+              <td>Appetizer</td>
+            @elseif ($u->tipe == 2)
+              <td>Main Course</td>
+            @elseif ($u->tipe == 3)
+              <td>Dessert</td>
+            @endif
             <td><img src="/storage/{{$u->filename}}" style="width: auto; height: 10%"></td>
-            <td>{{$u->created_at}}</td>
+            <td>{{$u->created_at->format('d M Y')}}</td>
             <form method="POST" action="{{route('penjual.deleteItem')}}">
               @csrf
                   <input type="hidden" name="table" value="1">
