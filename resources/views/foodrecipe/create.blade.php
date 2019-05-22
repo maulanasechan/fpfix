@@ -50,15 +50,15 @@
             <input type="text" required name="alat" placeholder="Alat" style="top: 33%; height: 6%">
             <input type="text" required name="bahan" placeholder="Bahan" style="top: 39.5%; height: 6%">
             <select name="tipe" style="top: 46%; height: 6%">
-              <option value="1">Appetaizer</option>
-              <option value="2">Main Course</option>
-              <option value="3">Dessert</option>
+              <option value="1" style="color: #354857">Appetaizer</option>
+              <option value="2" style="color: #354857">Main Course</option>
+              <option value="3" style="color: #354857">Dessert</option>
             </select>
-            <input type="text" name="langkah[]" placeholder="Langkah 1" style="top: 52.5%; height: 6%">
-            <input type="text" name="langkah[]" placeholder="Langkah 2" style="top: 59%; height: 6%">
-            <input type="text" name="langkah[]" placeholder="Langkah 3" style="top: 65.5%; height: 6%">
-            <input type="text" name="langkah[]" placeholder="Langkah 4" style="top: 72%; height: 6%">
-            <input type="text" name="langkah[]" placeholder="Langkah 5" style="top: 78.5%; height: 6%">
+            <input type="text" name="langkah[]" placeholder="Langkah 1" style="top: 52.5%; height: 6%" required>
+            <input type="text" name="langkah[]" placeholder="Langkah 2" style="top: 59%; height: 6%" required>
+            <input type="text" name="langkah[]" placeholder="Langkah 3" style="top: 65.5%; height: 6%" required>
+            <input type="text" name="langkah[]" placeholder="Langkah 4" style="top: 72%; height: 6%" required>
+            <input type="text" name="langkah[]" placeholder="Langkah 5" style="top: 78.5%; height: 6%" required>
             <input required type="file" name="cover" class="avatar" style="top: 84%">
             <center>
                 <button type="submit" class="round-button-login-new" style="top: 90%; width: 5%; height: 10%">Post</button>

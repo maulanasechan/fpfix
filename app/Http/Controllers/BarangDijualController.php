@@ -29,19 +29,19 @@ class BarangDijualController extends Controller
     public function dessert()
     {
         //
-        $barang = barang_dijual::all();
+        $barang = barang_dijual::where('tipe', 3)->get();
         return view('marketplace.dessert', compact('barang'));
     }
 
     public function appetaizer()
     {
-        //
-        return view('marketplace.appetaizer');
+        $barang = barang_dijual::where('tipe', 1)->get();
+        return view('marketplace.appetaizer')->with('barang',$barang);
     }
     public function maincourse()
     {
-        //
-        return view('marketplace.maincourse');
+        $barang = barang_dijual::where('tipe', 2)->get();
+        return view('marketplace.maincourse')->with('barang',$barang);
     }
     /**
      * Show the form for creating a new resource.

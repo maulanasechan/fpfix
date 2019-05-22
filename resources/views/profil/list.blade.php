@@ -17,7 +17,7 @@
         </style>
     </head>
     <body style="background-color: white">
-        <p class="judul" style="top: 23%;">List of Transaction</p>
+        <p class="judul" style="top: 15%;">List of Transaction</p>
         <img src="/img/mppl11.png" class="login-img9">  
         <img src="/img/mppl12.png" class="login-img10">
         <img src="/img/mppl12.png" class="login-img11" style="top: 55%;"> 
@@ -55,7 +55,11 @@
                 @elseif ($item->status == 1)
                     <td>Barang telah diterima</td>
                 @endif
+                @if (isset($item->resi))
                 <td><img src="/storage/{{$item->resi}}" style="height: 12%"></td>
+                @else
+                <td></td>
+                @endif
                 <td><img src="{{$item->bukti}}" style="height: 8%"></td>
                 <td>{{$item->created_at->format('d M Y')}}</td>
                 <td>

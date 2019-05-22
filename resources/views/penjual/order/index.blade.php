@@ -15,7 +15,7 @@
 <img src="/img/mppl12.png" class="login-img11"> 
 <img src="/img/mppl13.png" class="login-img12"> 
 <img src="/img/mppl15.png" class="login-img15">   
-<p class="judul" style="top: 28%; word-spacing: 30px;">List of Order</p>
+<p class="judul" style="top: 17%; word-spacing: 30px;">List of Order</p>
 <center><div class="container" style="top: 50%">
   <table class="table" style="width: 85%;">
     <thead>
@@ -32,9 +32,7 @@
       </tr>
     </thead>
     <tbody>
-      
-        @foreach($penjual->barang_dijual as $barang)
-          @foreach ($barang->order as $u)
+          @foreach ($barang as $u)
           <tr class="success">
             <td>{{$u->id}}</td>
             <td>{{$u->user->username}}</td>
@@ -59,7 +57,6 @@
 
           
           @endforeach  
-        @endforeach
         
     </tbody>
   </table>
@@ -80,9 +77,7 @@
     <button type="submit" class="logout">{{ __('Logout') }}</button>
 </form>
 </body>
-
-        @foreach($penjual->barang_dijual as $barang)
-          @foreach ($barang->order as $u)
+          @foreach ($barang as $u)
           <div class="modal fade" id="myModal{{$u->id}}" role="dialog" >
             <div class="modal-dialog" style="width: 50%">
             
@@ -104,6 +99,5 @@
             </div>
           </div>
           @endforeach  
-        @endforeach
 
 </html>

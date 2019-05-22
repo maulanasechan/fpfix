@@ -10,7 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: white">
-<p class="judul" style="top: 21%">Dessert</p>
+<p class="judul" style="top: 21%">Main Course</p>
 <img src="/img/mppl11.png" class="login-img9">  
 <img src="/img/mppl12.png" class="login-img10">
 <img src="/img/mppl12.png" class="login-img11"> 
@@ -21,15 +21,15 @@
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel" style="padding: 0px 100px">
         <div class="carousel-inner">
-          @if(count($barang))
-            @foreach($barang as $b)
+          @if(count($resep))
+            @foreach($resep as $b)
               @if($loop->first)
               <div class="item active">
-              <div class="col-xs-4"><a href="foodprofil/{{$b->id_barang}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_barang}}</p><p style="margin-top: -2%">{{$b->penjual->nama_penjual}}</p></a></div>
+              <div class="col-xs-4"><a href="foodprofil/{{$b->id_barang}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p><p style="margin-top: -2%">{{$b->user->username}}</p></a></div>
              </div>
              @else
               <div class="item">
-              <div class="col-xs-4"><a href="foodprofil/{{$b->id_barang}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_barang}}</p><p style="margin-top: -2%">{{$b->penjual->nama_penjual}}</p></a></div>
+              <div class="col-xs-4"><a href="foodprofil/{{$b->id_barang}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p><p style="margin-top: -2%">{{$b->user->username}}</p></a></div>
              </div>
              @endif
             @endforeach
@@ -49,7 +49,7 @@
 ?>
 <img class="crop" src=<?php echo $avatar ?>>
 <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
-<a href="{{route('marketplace.index')}}" class="logout" style="top: 81%;">Back</a>
+<a href="{{route('foodrecipe.index')}}" class="logout" style="top: 81%;">Back</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout">{{ __('Logout') }}</button>

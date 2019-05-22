@@ -15,7 +15,7 @@
 <img src="/img/mppl12.png" class="login-img11"> 
 <img src="/img/mppl13.png" class="login-img12"> 
 <img src="/img/mppl15.png" class="login-img15">   
-<p class="judul" style="top: 28%; word-spacing: 30px;">List of Product</p>
+<p class="judul" style="top: 17%; word-spacing: 30px;">List of Product</p>
 <center><div class="container" style="top: 50%">
   <table class="table" style="width: 85%;">
     <thead>

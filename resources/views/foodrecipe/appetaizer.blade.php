@@ -10,7 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: white">
-<p class="judul" style="top: 21%">Food Recipe</p>
+<p class="judul" style="top: 21%">Appetaizer</p>
 <img src="/img/mppl11.png" class="login-img9">  
 <img src="/img/mppl12.png" class="login-img10">
 <img src="/img/mppl12.png" class="login-img11"> 
@@ -21,36 +21,35 @@
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel" style="padding: 0px 100px">
         <div class="carousel-inner">
-          @foreach( $resep as $item)
-          @if ($loop->first)
-          <div class="item active">
-            <div class="col-xs-4"><a href="resepprofil/{{$item->id_resep}}"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
-          </div>
+          @if(count($resep))
+            @foreach($resep as $b)
+              @if($loop->first)
+              <div class="item active">
+              <div class="col-xs-4"><a href="resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p><p style="margin-top: -2%">{{$b->user->username}}</p></a></div>
+             </div>
+             @else
+              <div class="item">
+              <div class="col-xs-4"><a href="resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p><p style="margin-top: -2%">{{$b->user->username}}</p></a></div>
+             </div>
+             @endif
+            @endforeach
+            
           @else
-          <div class="item">
-            <div class="col-xs-4"><a href="resepprofil/{{$item->id_resep}}"><img src="/storage/{{$item->filename}}" class="img-responsive" style="width: 70%"><p style="margin-top: 2%">{{$item->nama_makanan}}</p><p style="margin-top: -2%">{{$item->user->username}}</p></a></div>
-          </div>
+            <p class="judul">Tidak Ada Data</p>
           @endif
-          @endforeach
-
-          
-          <!-- add  more items here -->
-          <!-- Example item start:  -->
-          
-          <!--  Example item end -->
-        </div>
+          </div>
         <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
         <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
       </div>
     </div>
   </div>
 </div>
+<a href="{{route('foodrecipe.index')}}" class="logout" style="top: 81%;">Back</a>
 <?php
     $avatar = Auth::user()->avatar;
 ?>
 <img class="crop" src=<?php echo $avatar ?>>
 <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
-<a href="/foodrecipe/create" class="logout" style="top: 81%;">Post</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout">{{ __('Logout') }}</button>

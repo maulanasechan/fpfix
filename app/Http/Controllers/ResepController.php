@@ -7,6 +7,7 @@ use App\Langkah;
 use App\Komen;
 use App\Rating;
 use App\Report;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
@@ -29,14 +30,14 @@ class ResepController extends Controller
 
     public function dessert()
     {
-        //
-        return view('foodrecipe.dessert');
+        $resep = resep::where('tipe', 3)->get();
+        return view('foodrecipe.dessert')->with('resep', $resep);
     }
 
     public function maincourse()
     {
-        //
-        return view('foodrecipe.maincourse');
+        $resep = resep::where('tipe', 2)->get();
+        return view('foodrecipe.maincourse')->with('resep', $resep);
     }
 
     public function appetaizer()

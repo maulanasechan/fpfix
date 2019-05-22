@@ -196,7 +196,7 @@
   @endforeach
   
   <img src="/img/mppl12.png" class="login-img10" style="top : {{$s-10}}%">
-  <a href="/foodrecipe" class="logout" style="top: {{$s-8}}%;">Back</a>
+  <a href="/marketplace" class="logout" style="top: {{$s-8}}%;">Back</a>
   <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout" style="top: {{$s}}%">{{ __('Logout') }}</button>
