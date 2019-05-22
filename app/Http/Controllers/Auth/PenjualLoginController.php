@@ -41,12 +41,12 @@ class PenjualLoginController extends Controller
     	$penjual->alamat = $request->alamat;
     	$penjual->avatar = $request->avatar;
         $penjual->rekening = $request->rekening;
-        $penjual->atas_nama = $request->atasnama;
+        $penjual->atasnama = $request->atasnama;
         $penjual->save();
     	// $penjual->waktu_buka = NUL
     	// $penjual->waktu_tutup = \Carbon\Carbon::parse($request->waktu_tutup)->format('H:i');
 
-    	return redirect('/home');
+    	return redirect()->route('penjual.login');
     }
 
     public function showLoginForm()
@@ -64,7 +64,7 @@ class PenjualLoginController extends Controller
     	if (Auth::guard('penjual')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
     	{
             // return Auth::user();
-    		return redirect()->intended(route('penjual.dashboard')) ;
+    		return redirect()->route('penjual.dashboard') ;
     	}
     	
     	return redirect()->back()->withInput($request->only('email', 'remember'));

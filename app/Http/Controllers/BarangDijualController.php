@@ -84,8 +84,8 @@ class BarangDijualController extends Controller
         $item->original_filename = $cover->getClientOriginalName();
         $item->filename = $cover->getFilename().'.'.$extension;
         return $item;
+        return redirect()->route('penjual.dashboard')->with('success','Book added successfully...');
 
-        // return redirect()->route('penjual.dashboard')->with('success','Book added successfully...');
         // return $item;
     }
 

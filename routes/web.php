@@ -54,6 +54,7 @@ Route::prefix('penjual')->group(function(){
 	Route::post('/editStore', 'PenjualController@editStore')->name('penjual.editStore');
 	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
 	Route::post('/deleteItem', 'PenjualController@deleteItem')->name('penjual.deleteItem');
+	Route::post('/uploadResi', 'PenjualController@uploadResi')->name('penjual.uploadResi');
 });
 
 // Route::get('/foodprofil', 'BarangDijualController@foodProfil');

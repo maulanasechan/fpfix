@@ -51,19 +51,23 @@
                 @elseif (!isset($item->resi))
                     <td>Barang sedang diproses</td>
                 @elseif ($item->status == 0)
-                    <td>Barang sedang diproses</td>
+                    <td>Barang sedang dikirim</td>
                 @elseif ($item->status == 1)
                     <td>Barang telah diterima</td>
                 @endif
-                <td><img src="{{$item->resi}}" style="height: 12%"></td>
-                <td><img src="{{$item->bukti}}" style="height: 12%"></td>
+                <td><img src="/storage/{{$item->resi}}" style="height: 12%"></td>
+                <td><img src="{{$item->bukti}}" style="height: 8%"></td>
                 <td>{{$item->created_at->format('d M Y')}}</td>
                 <td>
                     <form method="POST" action="{{route('profil.barangDiterima')}}">
                         @csrf
                         <input type="hidden" name="id" value="{{$item->id}}">
-                        <button class='btn btn-sm btn-success delete-btn' type='submit'>Barang Diterima </button>    
-                    </form>
+                        @if ($item->status != 1)
+                          <button class='btn btn-sm btn-success delete-btn' type='submit'>Barang Diterima </button>    
+                        @else
+                          <button disabled class='btn btn-sm btn-success delete-btn' type='submit'>Barang Diterima </button>    
+                        @endif
+                      </form>
                     
                     <a class="btn btn-sm btn-primary delete-btn" href="/profil/detail/{{$item->id}}">Detail Order</a>
                 </td>
@@ -77,7 +81,7 @@
         ?>
         <img class="crop" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
-        <a href="/marketplace/create" class="logout" style="top: 80%;">Back</a>
+        <a href="/home" class="logout" style="top: 80%;">Back</a>
         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
             @csrf
             <button type="submit" class="logout">{{ __('Logout') }}</button>
