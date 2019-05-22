@@ -33,18 +33,18 @@
 <div class="container" style="position: absolute; top: 70%">
   <div class="row">
     <div class="col-md-12">
-      <div class="carousel slide multi-item-carousel" id="theCarousel">
+      <div class="carousel slide multi-item-carousel" id="theCarousel" style="padding: 0 100px">
         <div class="carousel-inner">
           @if(count($barang))
-            <!-- {{count($barang)}} -->
+            
             @foreach($barang as $b)
               @if($loop->first)
               <div class="item active">
-              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100px; height: 80px; "><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
+              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 50%; height: 150px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @else
               <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 200px; height: 80px; "><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
+              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 50%; height: 150px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @endif
             @endforeach
@@ -95,6 +95,5 @@ $('.multi-item-carousel .item').each(function(){
     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
   }
 });
-</script>
 </body>
 </html>

@@ -39,7 +39,7 @@
       <img src="/img/mppl13.png" class="login-img12"> 
       <img src="/img/mppl15.png" class="login-img15">
       <p class="judul" style="top: 20%">{{$resep->nama_makanan}}</p>
-      <img class="cropprof"  src="/img/user.jpg" style="left: 25%;">      
+      <img class="cropprof"  src="/storage/{{$resep->filename}}" style="left: 25%;">      
       <div class="box" style="top: 28%;">
         Bahan : {{$resep->bahan}}
       </div>
