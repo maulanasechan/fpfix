@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Order extends Migration
+class Report extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class Order extends Migration
      */
     public function up()
     {
-        Schema::create('order', function (Blueprint $table) {
+        Schema::create('report', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_user');
             $table->string('id_barang');
-            $table->string('amount');
-            $table->string('status');
-            $table->string('bukti')->nullable();
-            $table->string('resi')->nullable();
+            $table->string('report');
+            $table->string('tipe');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class Order extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('report');
     }
 }

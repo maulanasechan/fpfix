@@ -32,21 +32,21 @@
             <button type="submit" class="logout">{{ __('Logout') }}</button>
         </form>
         
-        <p class="judul">Add Product</p>
-        <form method="POST" action="{{ route('marketplace.store') }}" enctype="multipart/form-data">
+        <p class="judul">Update Product</p>
+        <form method="POST" action="{{ route('penjual.editStore') }}" enctype="multipart/form-data">
             @csrf
             <?php 
                 $id = 1;  
             ?>
-            <input type="text" name="nama_barang" placeholder="Nama Barang" style="top: 40%; height: 7%">
-            <input type="hidden" name="id_penjual" value= "{{Auth::guard('penjual')->user()->id}}">
-            <input type="text" name="deskripsi" placeholder="Deskripsi Barang" style="top: 48%; height: 7%">
+            <input type="text" name="nama_barang" placeholder="Nama Makanan" value="{{$product->nama_barang}}" style="top: 40%; height: 7%">
+            <input type="hidden" name="id" value= "{{$product->id_barang}}">
+            <input type="text" name="deskripsi" placeholder="Deskripsi Barang" value="{{$product->deskripsi}}" style="top: 48%; height: 7%">
             <select name="tipe" style="top: 56%; height: 7%">
-              <option value="1">Appetaizer</option>
-              <option value="2">Main Course</option>
-              <option value="3">Dessert</option>
+              <option value="1" style="color: #354857">Appetaizer</option>
+              <option value="2" style="color: #354857">Main Course</option>
+              <option value="3" style="color: #354857">Dessert</option>
             </select>
-            <input type="number" name="harga" placeholder="Harga" style="top: 64%; height: 7%">
+            <input type="number" name="harga" placeholder="Harga" value="{{$product->harga}}" style="top: 64%; height: 7%">
             <input type="file" name="cover" class="avatar" style="top: 72%">
             <center>
                 <button type="submit" class="round-button-login-new" style="top: 86%; width: 5%; height: 10%">Post</button>

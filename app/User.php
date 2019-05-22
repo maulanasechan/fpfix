@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function resep() {
         return $this->hasMany('App\resep', 'id_user', 'id');
     }
+
+    public function report() {
+        return $this->hasMany('App\Report', 'id_user', 'id');
+    }
 }

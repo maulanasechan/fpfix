@@ -15,7 +15,7 @@
 <img src="/img/mppl12.png" class="login-img11"> 
 <img src="/img/mppl13.png" class="login-img12">  
 
-<div class="container" style="top: 35%">
+<div class="container" style="top: 50%">
   <h2>Table Penjual</h2>
   <table class="table">
     <thead>
@@ -47,7 +47,12 @@
             <td>{{$u->rekening}}</td>
             <td>{{$u->atas_nama}}</td>
 		        <td>{{$u->created_at}}</td>
-		        <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button></td>
+		        <form method="POST" action="{{route('admin.deleteItem')}}">
+              @csrf
+                  <input type="hidden" name="table" value="8">
+                  <input type="hidden" name="id" value="{{$u->id}}">
+                <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button></td>  
+            </form>
 		      </tr>      
       		@endforeach
       	@else
@@ -55,6 +60,7 @@
       	@endif
     </tbody>
   </table>
+    {{$penjual->links()}}
 </div>
 <a href="{{route('admin.dashboard')}}" class="logout" style="top: 80%;">Back</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">

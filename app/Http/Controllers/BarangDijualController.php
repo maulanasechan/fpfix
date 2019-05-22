@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Auth;
 use App\Komen;
 use App\Order;
+use App\Report;
 
 class BarangDijualController extends Controller
 {
@@ -34,16 +35,13 @@ class BarangDijualController extends Controller
 
     public function appetaizer()
     {
-        //
         $barang = barang_dijual::where('tipe', 1)->get();
-        return view('marketplace.dessert', compact('barang'));
+        return view('marketplace.appetaizer')->with('barang',$barang);
     }
     public function maincourse()
     {
-        //
         $barang = barang_dijual::where('tipe', 2)->get();
-        // dd($barang);
-        return view('marketplace.dessert', compact('barang'));
+        return view('marketplace.maincourse')->with('barang',$barang);
     }
     /**
      * Show the form for creating a new resource.
@@ -52,7 +50,7 @@ class BarangDijualController extends Controller
      */
     public function create()
     {
-        //
+        // return Auth::guard('penjual')->user;
         return view('marketplace.create');
     }
 
@@ -85,9 +83,9 @@ class BarangDijualController extends Controller
         $item->mime = $cover->getClientMimeType();
         $item->original_filename = $cover->getClientOriginalName();
         $item->filename = $cover->getFilename().'.'.$extension;
-        $item->save();
+        return $item;
+        return redirect()->route('penjual.dashboard')->with('success','Book added successfully...');
 
-        return redirect()->route('marketplace.index')->with('success','Book added successfully...');
         // return $item;
     }
 
@@ -165,7 +163,7 @@ class BarangDijualController extends Controller
 
     public function foodProfilRate (Request $request) {
         // return $request;
-        $rating = Rating::where('id_user', Auth::user()->id)->where('id_barang', $request->id_barang)->first();
+        $rating = Rating::where('id_user', Auth::user()->id)->where('id_barang', $request->id_barang)->where('tipe', 0)->first();
         if (isset($rating)) {
             $rating->rate = $request->rate;
             $rating->save();
@@ -193,6 +191,17 @@ class BarangDijualController extends Controller
         $komen->tipe = 0;
         $komen->save();
         return redirect()->back();
+    }
+
+    public function foodProfilReport(Request $request) {
+        // return $request;
+            $report = new Report;
+            $report->id_user = Auth::user()->id;
+            $report->id_barang = $request->id_barang;
+            $report->report = $request->report;
+            $report->tipe = 0;
+            $report->save();
+            return redirect()->back();
     }
 
     public function buyFood (Request $request) {

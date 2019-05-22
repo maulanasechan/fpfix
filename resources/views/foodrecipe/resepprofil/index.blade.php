@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Food Profil</title>
+  <title>Resep Profil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
@@ -34,34 +34,39 @@
     </div>
   @endif --}}
 <body>    
-  <img src="/img/mppl11.png" class="login-img9">  
-      
+  <img src="/img/mppl11.png" class="login-img9">        
       <img src="/img/mppl12.png" class="login-img11"> 
       <img src="/img/mppl13.png" class="login-img12"> 
       <img src="/img/mppl15.png" class="login-img15">
-      <p class="judul" style="top: 20%">{{$barang->nama_barang}}</p>
-      <img class="cropprof"  src="/storage/{{$barang->filename}}" style="left: 30%">      
-      <div class="box">
-        Harga : {{$barang->harga}}
+      <p class="judul" style="top: 20%">{{$resep->nama_makanan}}</p>
+      <img class="cropprof"  src="/storage/{{$resep->filename}}" style="left: 25%;">      
+      <div class="box" style="top: 28%;">
+        Bahan : {{$resep->bahan}}
+      </div>
+      <div class="box" style="top: 34.5%">
+        Alat :  {{$resep->peralatan}}
       </div>
       <div class="box" style="top: 41%">
-        Deskripsi : {{$barang->deskripsi}}
+        Deskripsi : {{$resep->deskripsi}}
       </div>
-      <div class="box" style="top: 48%">
-        Nama Penjual : {{$barang->penjual->nama_penjual}}
+      @foreach ($langkah as $item)
+      <div class="box" style="top: {{47.5+($loop->index*6.5)}}%">
+        Langkah {{$loop->index+1}} : {{$item->langkah}}
       </div>
-      <p class="rating" style="top: 56%">Rating {{$rating}} from 5</p>
-      <p class="rating" style="top: 58%">Your rating : {{$rate}}</p>
-      <button class="komen" style="right: 34.5%" data-toggle="modal" data-target="#myModal">
+      @endforeach
+      
+      <p class="rating" style="top: 81%">Rating {{$rating}} from 5</p>
+      <p class="rating" style="top: 83%">Your rating : {{$userRate}}</p>
+      <button class="komen" style="right: 34.5%; top : 80%;" data-toggle="modal" data-target="#myModal" >
         Rate it
       </button>
-      <button class="komen" data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113;">
+      <button class="komen" data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113; top : 80%;">
         Comment
       </button>
-      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 39.5%;">
+      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 39.5%; top : 80%;">
         Report
       </button>
-      <center><a data-toggle="modal" data-target="#myModalbuy" class="round-button-login-new" style="font-size: 100%; width: 4.25%; line-height: 400%; top: 72%">Buy</a></center>
+
       
       <?php
           $avatar = Auth::user()->avatar;
@@ -81,7 +86,7 @@
           <h4 class="modal-title" style="color: #354857">Rate This Food</h4>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('foodprofil.rate') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('resepprofil.rate') }}" enctype="multipart/form-data">
             @csrf
             <button class="komen" name="rate" value="1" style="background-color: #EFC113; left: 2%;">
               Sangat Buruk
@@ -98,7 +103,7 @@
             <button class="komen" name="rate" value="5" style="background-color: #EFC113; left: 47.5%">
               Sangat Enak
             </button>
-            <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">
+            <input type="hidden" name="id_resep" value="{{$resep->id_resep}}">
           </form>
         </div>
       </div>  
@@ -117,9 +122,9 @@
 
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('foodprofil.komen') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('resepprofil.komen') }}" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">
+            <input type="hidden" name="id_resep" value='{{$resep->id_resep}}'>
             <input required type="text" name="komen" placeholder="Type Your Comment" style="width: 80%; height: 150%; top: 120%;">
             <button type="submit" class="round-button-login-new" style="top: 380%; width: 10%; height: 250%">Save</button>
           </form>
@@ -129,29 +134,6 @@
   </div>  
 
 <!-- <<<<<<< HEAD:resources/views/foodprofil/index.blade.php -->
-  <div class="modal fade" id="myModalbuy" role="dialog" >
-    <div class="modal-dialog" style="width: 50%">
-    
-      <!-- Modal content-->
-      <div class="modal-content" style="width: 100%; height: 280px;">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="color: #354857">Buy This Food</h4>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="{{ route('buyFood') }}" enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">
-            <input type="number" name="jumlah" placeholder="Jumlah Barang" style="width: 80%; height: 150%; top: 120%;">
-            <button type="submit" class="round-button-login-new" style="top: 550%; width: 10%; height: 250%">Buy</button>
-          </form>
-          <!-- <div class="box" style="width: 80%; height: 150%; top: 210%; position: absolute; z-index: 2; left: 10%;">
-              Total Harga Rp. <i id="total"></i>
-          </div> -->
-        </div>
-      </div>  
-    </div>
-  </div> 
 
   <div class="modal fade" id="myModalreport" role="dialog" >
     <div class="modal-dialog" style="width: 50%">
@@ -165,9 +147,9 @@
 
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('foodprofil.report') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('resepprofil.report') }}" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">
+            <input type="hidden" name="id_resep" value="{{$resep->id_resep}}">
             <input required type="text" name="report" placeholder="Type Why You Report This Food" style="width: 80%; height: 150%; top: 120%; ">
             <button type="submit" class="round-button-login-new" style="top: 380%; width: 10%; height: 250%">Save</button>
           </form>
@@ -178,7 +160,7 @@
   <!-- <p class="judul" style="top: 85%">Komentar</p> -->
   <<?php $s = 92; ?>
   @foreach ($komen as $item)
-  <div class="postkomen" style="height: 20%; top: {{92+($loop->index*25)}}%">
+  <div class="postkomen" style="height: 20%; top: {{100+($loop->index*25)}}%">
     <?php $s = 92+($loop->index*25); ?>
     <img src="{{$item->user->avatar}}" style="position: absolute; z-index: 2; width: 10%; left: 2%; top: 10%; height: 56px;">
     <img src="/img/comment.png" style="position: absolute; z-index: 2; width: 7%; right: 5%; top: 10%;">  
@@ -195,8 +177,9 @@
     </div> -->
   @endforeach
   
+  
   <img src="/img/mppl12.png" class="login-img10" style="top : {{$s-10}}%">
-  <a href="/marketplace" class="logout" style="top: {{$s-8}}%;">Back</a>
+  <a href="/foodrecipe" class="logout" style="top: {{$s-8}}%;">Back</a>
   <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout" style="top: {{$s}}%">{{ __('Logout') }}</button>

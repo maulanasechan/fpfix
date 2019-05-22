@@ -43,7 +43,7 @@
         <a href="{{ route('admin.komentar') }}" class="home-link" style="font-size: 300%; left: 59%; top: 52%">Komentar</a>
         <a href="{{ route('admin.user') }}" class="home-link" style="font-size: 300%; left: 51%; top: 67%">User</a>
         <a href="{{ route('admin.penjual') }}" class="home-link" style="font-size: 300%; left: 70%; top: 67%">Penjual</a>
-        <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
+        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
             @csrf
             <button type="submit" class="home-login-button">{{ __('Logout') }}</button>
         </form>

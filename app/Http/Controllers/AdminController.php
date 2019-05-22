@@ -11,6 +11,7 @@ use App\Komen;
 use App\barang_dijual;
 use App\resep;
 use App\Order;
+use App\Report;
 
 class AdminController extends Controller
 {
@@ -35,29 +36,29 @@ class AdminController extends Controller
     }
 
     public function userTable(){
-        $user = User::all();
+        $user = User::paginate(5);
         return view('admin.user')->with('user', $user);
     }
 
     public function penjualTable(){
-        $penjual = Penjual::all();
+        $penjual = Penjual::paginate(5);
         return view('admin.penjual')->with('penjual', $penjual);
     }
 
     public function ratingTable(){
-        $rating = Rating::all();
+        $rating = Rating::paginate(5);
         return view('admin.rating')->with('rating',$rating);
     }
 
     public function komentarTable(){
-        $komentar = Komen::all();
+        $komentar = Komen::paginate(5);
         return view('admin.komentar')->with('komentar',$komentar);
     }
 
-    // public function reportTable(){
-    //     $report = Komen::all();
-    //     return view('admin.report')->with(report'report',$report);
-    // }
+    public function reportTable(){
+        $report = Report::paginate(5);
+        return view('admin.report')->with('report',$report);
+    }
 
     public function transaksiTable(){
         $transaksi = Order::paginate(5);
@@ -65,12 +66,58 @@ class AdminController extends Controller
     }
 
     public function marketplaceTable(){
-        $marketplace = barang_dijual::all();
+        $marketplace = barang_dijual::paginate(5);
         return view('admin.marketplace')->with('marketplace',$marketplace);
     }
 
     public function foodrecipeTable(){
-        $foodrecipe = resep::all();
+        $foodrecipe = resep::paginate(5);
         return view('admin.foodrecipe')->with('foodrecipe',$foodrecipe);
+    }
+
+    public function deleteItem(Request $request) {
+        switch ($request->table) {
+            case '1':
+                $data = barang_dijual::find($request->id);
+                $data->delete();
+                break;
+
+            case '2':
+                $data = resep::find($request->id);
+                $data->delete();
+                break;
+
+            case '3':
+                $data = Report::find($request->id);
+                $data->delete();
+                break;
+
+            case '4':
+                $data = Order::find($request->id);
+                $data->delete();
+                break;
+
+            case '5':
+                $data = Rating::find($request->id);
+                $data->delete();
+                break;
+
+            case '6':
+                $data = Komen::find($request->id);
+                $data->delete();
+                break;
+
+            case '7':
+                $data = User::find($request->id);
+                $data->delete();
+                break;
+
+            case '8':
+                $data = Penjual::find($request->id);
+                $data->delete();
+                break;
+            
+}
+        return redirect()->back();
     }    
 }

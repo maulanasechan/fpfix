@@ -25,61 +25,76 @@
             @csrf
 
             <center>
-                    <input id="nama" type="text" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ old('nama') }}" required autofocus placeholder="Nama Penjual" style="top: 46.5%; height: 5.5%">
+                    <input id="nama" type="text" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ old('nama') }}" required autofocus placeholder="Nama Penjual" style="top: 46.5%; height: 5.5%; width: 40%">
 
                     @if ($errors->has('nama'))
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('nama') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
 
             <center>
-                    <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Email" style="top: 52.5%; height: 5.5%">
+                    <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Email" style="top: 52.5%; height: 5.5%; width: 40%">
 
                     @if ($errors->has('email'))
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
 
             <center>
-                    <input id="alamat" type="text" name="alamat" required placeholder="Alamat" value="{{ old('alamat') }}" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : '' }}" style="top: 58.5%; height: 5.5%">
+                    <input id="alamat" type="text" name="alamat" required placeholder="Alamat" value="{{ old('alamat') }}" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : '' }}" style="top: 58.5%; height: 5.5%; width: 40%">
 
                     @if ($errors->has('alamat'))
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamat') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
 
             <center>
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password" style="top: 76.5%; height: 5.5%">
-
-                    @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
+                    <input id="atasnama" type="text" class="form-control{{ $errors->has('atasnama') ? ' is-invalid' : '' }}" name="atasnama" required placeholder="Atas Nama" style="top: 64.5%; height: 5.5%; width: 40%">
             </center>
 
             <center>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Re-type Password" style="top: 82.5%; height: 5.5%">
-            </center>
-
-            <center>
-                    <input id="rekening" type="text" class="form-control{{ $errors->has('rekening') ? ' is-invalid' : '' }}" name="rekening" required placeholder="Rekening" style="top: 70.5%; height: 5.5%">
+                    <input id="rekening" type="text" class="form-control{{ $errors->has('rekening') ? ' is-invalid' : '' }}" name="rekening" required placeholder="Rekening" style="top: 70.5%; height: 5.5%; width: 40%">
 
                     @if ($errors->has('rekening'))
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('rekening') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
-            <center>
-                    <input id="atasnama" type="text" class="form-control{{ $errors->has('atasnama') ? ' is-invalid' : '' }}" name="atasnama" required placeholder="Atas Nama" style="top: 64.5%; height: 5.5%">
 
+            <center>
+                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password" style="top: 76.5%; height: 5.5%; width: 40%">
+
+                    @if ($errors->has('password'))
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    </div>
+                    @endif
+            </center>
+
+            <center>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Re-type Password" style="top: 82.5%; height: 5.5%; width: 40%">
             </center>
 
             <center>
@@ -87,7 +102,7 @@
             </center>
 
             <center>
-                    <button type="submit" class="round-button-login-new" style="top: 92%; width: 5%; height: 10%">
+                    <button type="submit" class="round-button-login-new" style="top: 91.5%; width: 5%; height: 10%">
                         {{ __('Register') }}
                     </button>
             </center>       

@@ -31,9 +31,10 @@ class PenjualLoginController extends Controller
             'rekening' => 'required',
             'atasnama' => 'required'
     	]);
-        // if ($validator->fails()) {    
-        //     return response()->json($validator->messages(), 200);
-        // }
+        if ($validator->fails()) {
+            // return $validator->messages();
+            return redirect()->back()->withErrors($validator);
+        }
     	$penjual = new Penjual;
     	$penjual->nama_penjual = $request->nama;
     	$penjual->email = $request->email;
@@ -43,10 +44,10 @@ class PenjualLoginController extends Controller
         $penjual->rekening = $request->rekening;
         $penjual->atas_nama = $request->atasnama;
         $penjual->save();
-    	// $penjual->waktu_buka = NUL
-    	// $penjual->waktu_tutup = \Carbon\Carbon::parse($request->waktu_tutup)->format('H:i');
-
-    	return redirect('/home');
+    	if (Auth::guard('penjual')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
+            {
+                return redirect()->route('penjual.dashboard') ;
+            }
     }
 
     public function showLoginForm()
@@ -63,7 +64,8 @@ class PenjualLoginController extends Controller
     	
     	if (Auth::guard('penjual')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
     	{
-    		return redirect()->intended(route('penjual.dashboard')) ;
+            // return Auth::user();
+    		return redirect()->route('penjual.dashboard') ;
     	}
     	
     	return redirect()->back()->withInput($request->only('email', 'remember'));

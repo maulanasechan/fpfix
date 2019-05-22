@@ -28,9 +28,12 @@
                     <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="Username" style="top: 50%; height: 7%">
 
                     @if ($errors->has('username'))
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('username') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
 
@@ -38,9 +41,12 @@
                     <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="Email" style="top: 58%; height: 7%">
 
                     @if ($errors->has('email'))
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
 
@@ -48,9 +54,12 @@
                     <input id="alamat" type="text" name="alamat" required placeholder="Alamat" value="{{ old('alamat') }}" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : '' }}" style="top: 66%; height: 7%">
 
                     @if ($errors->has('alamat'))
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('alamat') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
 
@@ -58,9 +67,12 @@
                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password" style="top: 74%; height: 7%">
 
                     @if ($errors->has('password'))
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
+                    </div>
                     @endif
             </center>
 

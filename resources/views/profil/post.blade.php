@@ -33,24 +33,26 @@
 {{-- <div class="container" style="position: absolute; top: 70%">
   <div class="row">
     <div class="col-md-12">
-      <div class="carousel slide multi-item-carousel" id="theCarousel">
+      <div class="carousel slide multi-item-carousel" id="theCarousel" style="padding: 0 100px">
         <div class="carousel-inner">
           @if(count($barang))
-            <!-- {{count($barang)}} -->
+            
             @foreach($barang as $b)
               @if($loop->first)
               <div class="item active">
-              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100px; height: 80px; "><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
+              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 50%; height: 150px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @else
               <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 200px; height: 80px; "><p style="margin-top: 2%">Nasi Pecel</p><p style="margin-top: -2%">Bu Nanik</p></a></div>
+              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 50%; height: 150px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @endif
             @endforeach
             
           @else
-            <p class="judul">Tidak Ada Data</p>
+            <div class="item active">
+              <div class="col-xs-4" style="padding: 5%;"><p style="margin-top: 2%">Anda Tidak Memiliki Resep</p></div>
+             </div>
           @endif
           </div>       
           <!--  Example item end -->
@@ -66,6 +68,9 @@
 <p  class="home-link2" style="top: 40%; font-size: 120%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);"><?php echo $user->alamat; ?></p>
 
 <a href="/profil/edit" class="home-link" style="top: 47%; font-size: 150%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">Edit Profile</a>
+
+<a href="/profil/list" class="home-link" style="top: 52%; font-size: 150%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">List Order</a>
+<a href="{{route('home')}}" class="logout" style="top: 81%;">Back</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout">{{ __('Logout') }}</button>
@@ -91,6 +96,5 @@ $('.multi-item-carousel .item').each(function(){
     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
   }
 });
-</script>
 </body>
 </html>
