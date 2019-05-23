@@ -15,7 +15,7 @@
 <img src="/img/mppl12.png" class="login-img11"> 
 <img src="/img/mppl13.png" class="login-img12"> 
 <img src="/img/mppl15.png" class="login-img15">   
-<p class="judul" style="top: 28%; word-spacing: 30px;">List of Product</p>
+<p class="judul" style="top: 17%; word-spacing: 30px;">List of Product</p>
 <center><div class="container" style="top: 50%">
   <table class="table" style="width: 85%;">
     <thead>
@@ -47,13 +47,19 @@
             @elseif ($u->tipe == 3)
               <td>Dessert</td>
             @endif
-            <td><img src="/storage/{{$u->filename}}" style="width: auto; height: 10%"></td>
-            <td>{{$u->created_at->format('d M Y')}}</td>
+            <td><img src="/storage/{{$u->filename}}" style="width: auto; max-height: 50px; margin: 0 auto; display: block;"></td>
+            <td>{{$u->created_at}}</td>
+            <form method="GET" action="{{route('penjual.update')}}">
+              @csrf
+                  <input type="hidden" name="table" value="1">
+                  <input type="hidden" name="id" value="{{$u->id_barang}}">
+                <td><button class='btn btn-sm btn-danger delete-btn' type='submit' style="background-color: #354857; border : none;">Update </button></td>  
+            </form> 
             <form method="POST" action="{{route('penjual.deleteItem')}}">
               @csrf
                   <input type="hidden" name="table" value="1">
                   <input type="hidden" name="id" value="{{$u->id_barang}}">
-                <td><button class='btn btn-sm btn-danger delete-btn' type='submit'>Delete </button></td>  
+                <td><button class='btn btn-sm btn-danger delete-btn' type='submit' style="border : none;">Delete </button></td>  
             </form>
           </tr>      
           @endforeach
@@ -62,8 +68,14 @@
         @endif
     </tbody>
   </table>
+  {{$marketplace->links()}}
 </div>
 </center>
+<?php
+    $avatar = Auth::guard('penjual')->user()->avatar;
+?>
+<img class="crop" src=<?php echo $avatar ?>>
+<a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
 <a href="{{route('penjual.dashboard')}}" class="logout" style="top: 81%;">Back</a>
 <a href="{{route('marketplace.create')}}" class="logout" style="top: 74%;">Add</a>
 <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">

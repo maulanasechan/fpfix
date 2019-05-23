@@ -36,27 +36,27 @@ class AdminController extends Controller
     }
 
     public function userTable(){
-        $user = User::all()::paginate(5);
+        $user = User::paginate(5);
         return view('admin.user')->with('user', $user);
     }
 
     public function penjualTable(){
-        $penjual = Penjual::all()::paginate(5);
+        $penjual = Penjual::paginate(5);
         return view('admin.penjual')->with('penjual', $penjual);
     }
 
     public function ratingTable(){
-        $rating = Rating::all()::paginate(5);
+        $rating = Rating::paginate(5);
         return view('admin.rating')->with('rating',$rating);
     }
 
     public function komentarTable(){
-        $komentar = Komen::all()::paginate(5);
+        $komentar = Komen::paginate(5);
         return view('admin.komentar')->with('komentar',$komentar);
     }
 
     public function reportTable(){
-        $report = Report::all()::paginate(5);
+        $report = Report::paginate(5);
         return view('admin.report')->with('report',$report);
     }
 

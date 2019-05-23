@@ -49,7 +49,9 @@ Route::prefix('penjual')->group(function(){
 	Route::post('/login', 'Auth\PenjualLoginController@login')->name('penjual.login.submit');
 	Route::post('/logout', 'Auth\PenjualLoginController@logout')->name('penjual.logout');
 	Route::get('/order', 'PenjualController@order')->name('penjual.order');
-	Route::get('/product', 'PenjualController@product')->name('penjual.product');
+	Route::get('/product', 'PenjualController@product')->name('penjual.product');	
+	Route::get('/update', 'PenjualController@update')->name('penjual.update');
+	Route::post('/editStore', 'PenjualController@editStore')->name('penjual.editStore');
 	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
 	Route::post('/deleteItem', 'PenjualController@deleteItem')->name('penjual.deleteItem');
 	Route::post('/uploadResi', 'PenjualController@uploadResi')->name('penjual.uploadResi');

@@ -26,13 +26,15 @@ class PenjualController extends Controller
 
     public function order()
     {
-        $penjual = Penjual::find(Auth::guard('penjual')->user()->id);
-        // return $barang = $penjual->barang_dijual[1]->order;
-        return view('penjual.order.index')->with('penjual',$penjual);
+        // $penjual = Penjual::find(Auth::guard('penjual')->user()->id);
+        $barang = barang_dijual::where('id_penjual', Auth::guard('penjual')->user()->id)->pluck('id_barang');
+        // return $barang;
+        $order = Order::whereIn('id_barang', $barang)->paginate(3);
+        return view('penjual.order.index')->with('barang',$order);
     }
 
     public function product(){
-        $marketplace = barang_dijual::where('id_penjual', Auth::guard('penjual')->user()->id)->get();
+        $marketplace = barang_dijual::where('id_penjual', Auth::guard('penjual')->user()->id)->paginate(3);
         return view('penjual.product.index')->with('marketplace',$marketplace);
     }
 
@@ -73,6 +75,29 @@ class PenjualController extends Controller
         $order->resi = $resi->getFilename().'.'.$extension;
         $order->save();
         return redirect()->back();
+    }
+
+    public function update(Request $request){
+        $product = barang_dijual::find($request->id);
+        return view('penjual.update')->with('product',$product);
+    }
+
+    public function editStore(Request $request){
+
+        $barang = barang_dijual::find($request->id);
+        $barang->nama_barang = $request->nama_barang;
+        $barang->deskripsi = $request->deskripsi;
+        $barang->harga = $request->harga;
+        $barang->tipe = $request->tipe;
+
+        if ($request->hasFile('cover')) {
+            $cover = $request->file('cover');
+            $extension = $cover->getClientOriginalExtension();
+            Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+            $barang->filename = $cover->getFilename().'.'.$extension;
+        }
+        $barang->save();
+        return $this->product();
     }
 }
 

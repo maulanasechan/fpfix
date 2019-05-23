@@ -31,9 +31,10 @@ class PenjualLoginController extends Controller
             'rekening' => 'required',
             'atasnama' => 'required'
     	]);
-        // if ($validator->fails()) {    
-        //     return response()->json($validator->messages(), 200);
-        // }
+        if ($validator->fails()) {
+            // return $validator->messages();
+            return redirect()->back()->withErrors($validator);
+        }
     	$penjual = new Penjual;
     	$penjual->nama_penjual = $request->nama;
     	$penjual->email = $request->email;
@@ -43,10 +44,10 @@ class PenjualLoginController extends Controller
         $penjual->rekening = $request->rekening;
         $penjual->atasnama = $request->atasnama;
         $penjual->save();
-    	// $penjual->waktu_buka = NUL
-    	// $penjual->waktu_tutup = \Carbon\Carbon::parse($request->waktu_tutup)->format('H:i');
-
-    	return redirect()->route('penjual.login');
+    	if (Auth::guard('penjual')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
+            {
+                return redirect()->route('penjual.dashboard') ;
+            }
     }
 
     public function showLoginForm()

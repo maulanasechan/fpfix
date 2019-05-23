@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style type="text/css">
@@ -40,7 +41,7 @@
       <img src="/img/mppl13.png" class="login-img12"> 
       <img src="/img/mppl15.png" class="login-img15">
       <p class="judul" style="top: 20%">{{$barang->nama_barang}}</p>
-      <img class="cropprof"  src="/storage/{{$barang->filename}}" style="left: 30%">      
+      <img class="cropprof"  src="/storage/{{$barang->filename}}" style="left: 30%; max-width: 150px; height: auto; max-height: 200px;">      
       <div class="box">
         Harga : {{$barang->harga}}
       </div>
@@ -52,14 +53,14 @@
       </div>
       <p class="rating" style="top: 56%">Rating {{$rating}} from 5</p>
       <p class="rating" style="top: 58%">Your rating : {{$rate}}</p>
-      <button class="komen" style="right: 34.5%" data-toggle="modal" data-target="#myModal">
-        Rate it
+      <button class="komen" style="right: 36%" data-toggle="modal" data-target="#myModal">
+        <i class="fas fa-thumbs-up"></i> Rate it
       </button>
       <button class="komen" data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113;">
-        Comment
+        <i class="fas fa-comment-dots"></i> Comment
       </button>
-      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 39.5%;">
-        Report
+      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 42.5%;">
+        <i class="fas fa-flag"></i> Report
       </button>
       <center><a data-toggle="modal" data-target="#myModalbuy" class="round-button-login-new" style="font-size: 100%; width: 4.25%; line-height: 400%; top: 72%">Buy</a></center>
       
@@ -176,7 +177,7 @@
     </div>
   </div> 
   <!-- <p class="judul" style="top: 85%">Komentar</p> -->
-  <<?php $s = 92; ?>
+  <?php $s = 92; ?>
   @foreach ($komen as $item)
   <div class="postkomen" style="height: 20%; top: {{92+($loop->index*25)}}%">
     <?php $s = 92+($loop->index*25); ?>
@@ -196,7 +197,20 @@
   @endforeach
   
   <img src="/img/mppl12.png" class="login-img10" style="top : {{$s-10}}%">
-  <a href="/foodrecipe" class="logout" style="top: {{$s-8}}%;">Back</a>
+  @switch($barang->tipe)
+      @case(1)
+        <a href="/marketplace/appetaizer" class="logout" style="top: {{$s-8}}%;">Back</a>
+          @break
+      @case(2)
+        <a href="/marketplace/maincourse" class="logout" style="top: {{$s-8}}%;">Back</a>
+          @break
+      @case(2)
+        <a href="/marketplace/dessert" class="logout" style="top: {{$s-8}}%;">Back</a>
+          @break
+      @default
+        <a href="/marketplace" class="logout" style="top: {{$s-8}}%;">Back</a>
+        @break        
+  @endswitch
   <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout" style="top: {{$s}}%">{{ __('Logout') }}</button>

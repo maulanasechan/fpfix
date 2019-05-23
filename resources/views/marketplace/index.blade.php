@@ -19,7 +19,9 @@
         <img src="/img/mppl11.png" class="login-img9">  
         <img src="/img/mppl12.png" class="login-img10">
         <img src="/img/mppl12.png" class="login-img11" style="top: 55%;"> 
-        <img src="/img/mppl13.png" class="login-img12"> 
+	<a href="/home">
+		<img src="/img/mppl13.png" class="login-img12">
+	</a>
         <img src="/img/mppl15.png" class="login-img15"> 
         
         <a href="/marketplace/appetaizer"><img class='top-right' src="{{ asset('img/appetaizer.png') }}" style="width: auto; height: 20%; right: 64%; top: 40%;"></a>

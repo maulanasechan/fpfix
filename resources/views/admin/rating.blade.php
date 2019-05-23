@@ -15,7 +15,7 @@
 <img src="/img/mppl12.png" class="login-img11"> 
 <img src="/img/mppl13.png" class="login-img12">  
 
-<div class="container" style="top: 35%">
+<div class="container" style="top: 50%">
   <h2>Table Rating</h2>
   <table class="table">
     <thead>
@@ -52,6 +52,7 @@
       	@endif
     </tbody>
   </table>
+    {{$rating->links()}}
 </div>
 <a href="{{route('admin.dashboard')}}" class="logout" style="top: 80%;">Back</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
