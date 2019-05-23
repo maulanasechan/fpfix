@@ -39,7 +39,7 @@
       <img src="/img/mppl13.png" class="login-img12"> 
       <img src="/img/mppl15.png" class="login-img15">
       <p class="judul" style="top: 20%">{{$resep->nama_makanan}}</p>
-      <img class="cropprof"  src="/storage/{{$resep->filename}}" style="left: 25%;">      
+      <img class="cropprof"  src="/storage/{{$resep->filename}}" style="left: 22%; top:30%; width: 250px; height: 250px; object-fit: cover">      
       <div class="box" style="top: 28%;">
         Bahan : {{$resep->bahan}}
       </div>
@@ -50,20 +50,20 @@
         Deskripsi : {{$resep->deskripsi}}
       </div>
       @foreach ($langkah as $item)
-      <div class="box" style="top: {{47.5+($loop->index*6.5)}}%">
+      <div class="box" style="top: {{47.5+($loop->index*10)}}%; height: 70px">
         Langkah {{$loop->index+1}} : {{$item->langkah}}
       </div>
       @endforeach
       
-      <p class="rating" style="top: 81%">Rating {{$rating}} from 5</p>
-      <p class="rating" style="top: 83%">Your rating : {{$userRate}}</p>
-      <button class="komen" style="right: 34.5%; top : 80%;" data-toggle="modal" data-target="#myModal" >
+      <p class="rating" style="top: 90%">Rating {{$rating}} from 5</p>
+      <p class="rating" style="top: 93%">Your rating : {{$userRate}}</p>
+      <button class="komen" style="right: 34.5%; top : 90%;" data-toggle="modal" data-target="#myModal" >
         Rate it
       </button>
-      <button class="komen" data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113; top : 80%;">
+      <button class="komen" data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113; top : 90%;">
         Comment
       </button>
-      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 39.5%; top : 80%;">
+      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 39.5%; top : 90%;">
         Report
       </button>
 
@@ -71,7 +71,7 @@
       <?php
           $avatar = Auth::user()->avatar;
       ?>
-      <img class="crop" src=<?php echo $avatar ?>>
+      <img class="crop" style="width: 98px; height: 98px; object-fit: cover" src=<?php echo $avatar ?>>
       <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
   <!-- Trigger the modal with a button -->
 
@@ -158,7 +158,7 @@
     </div>
   </div> 
   <!-- <p class="judul" style="top: 85%">Komentar</p> -->
-  <<?php $s = 92; ?>
+  <?php $s = 92; ?>
   @foreach ($komen as $item)
   <div class="postkomen" style="height: 20%; top: {{100+($loop->index*25)}}%">
     <?php $s = 92+($loop->index*25); ?>

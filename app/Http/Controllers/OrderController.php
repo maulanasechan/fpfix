@@ -11,6 +11,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         return view('penjual.order.index');
