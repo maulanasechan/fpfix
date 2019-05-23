@@ -70,7 +70,7 @@ class UserController extends Controller
         // return $item;
         $item->save();
 
-        return redirect()->back();
+        return redirect()->route('profil.post');
 
 
         // return $item;

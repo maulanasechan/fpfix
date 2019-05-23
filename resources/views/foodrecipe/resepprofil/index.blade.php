@@ -50,20 +50,20 @@
         Deskripsi : {{$resep->deskripsi}}
       </div>
       @foreach ($langkah as $item)
-      <div class="box" style="top: {{47.5+($loop->index*10)}}%; height: 70px">
+      <div class="box" style="top: {{47.5+($loop->index*6.5)}}%; ">
         Langkah {{$loop->index+1}} : {{$item->langkah}}
       </div>
       @endforeach
       
-      <p class="rating" style="top: 90%">Rating {{$rating}} from 5</p>
-      <p class="rating" style="top: 93%">Your rating : {{$userRate}}</p>
-      <button class="komen" style="right: 34.5%; top : 90%;" data-toggle="modal" data-target="#myModal" >
+      <p class="rating" style="top: 82%">Rating {{$rating}} from 5</p>
+      <p class="rating" style="top: 85%">Your rating : {{$userRate}}</p>
+      <button class="komen" style="right: 34.5%; top : 82%;" data-toggle="modal" data-target="#myModal" >
         Rate it
       </button>
-      <button class="komen" data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113; top : 90%;">
+      <button class="komen" data-toggle="modal" data-target="#myModalkomen" style="background-color: #EFC113; top : 82%;">
         Comment
       </button>
-      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 39.5%; top : 90%;">
+      <button class="komen" data-toggle="modal" data-target="#myModalreport" style="background-color: red; right: 39.5%; top : 82%;">
         Report
       </button>
 
@@ -179,7 +179,7 @@
   
   
   <img src="/img/mppl12.png" class="login-img10" style="top : {{$s-10}}%">
-  @switch($barang->tipe)
+  @switch($resep->tipe)
       @case(1)
         <a href="/foodrecipe/appetaizer" class="logout" style="top: {{$s-8}}%;">Back</a>
           @break

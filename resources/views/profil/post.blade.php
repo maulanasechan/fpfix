@@ -40,11 +40,11 @@
             @foreach($barang as $b)
               @if($loop->first)
               <div class="item active">
-              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
+              <div class="col-xs-4"><a href="/foodrecipe/resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @else
               <div class="item">
-              <div class="col-xs-4"><a href="#1"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
+              <div class="col-xs-4"><a href="/foodrecipe/resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @endif
             @endforeach

@@ -68,7 +68,7 @@
             </center>
 
             <center>
-                    <input id="rekening" type="text" class="form-control{{ $errors->has('rekening') ? ' is-invalid' : '' }}" name="rekening" required placeholder="Rekening" style="top: 70.5%; height: 5.5%; width: 40%">
+                    <input id="rekening" type="number" class="form-control{{ $errors->has('rekening') ? ' is-invalid' : '' }}" name="rekening" required placeholder="Rekening" style="top: 70.5%; height: 5.5%; width: 40%">
 
                     @if ($errors->has('rekening'))
                         <div class="alert">
