@@ -71,7 +71,6 @@
   {{$marketplace->links()}}
 </div>
 </center>
-
 <a href="{{route('penjual.dashboard')}}" class="logout" style="top: 81%;">Back</a>
 <a href="{{route('marketplace.create')}}" class="logout" style="top: 74%;">Add</a>
 <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">

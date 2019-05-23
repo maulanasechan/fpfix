@@ -70,7 +70,7 @@
             <button type="submit" class="logout">{{ __('Logout') }}</button>
         </form>
         
-        <img class="crop" src=<?php echo $avatar ?>>
+        <img class="crop" style="object-fit: cover; width: 98px; height: 98px; " src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
         <p class="judul" style="top: 6.5%; font-size: 250%">Add Recipe</p>
         <form method="POST" action="{{ route('foodrecipe.store') }}" enctype="multipart/form-data" class="inputForm">

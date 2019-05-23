@@ -48,8 +48,8 @@
       <div class="box" style="top: 41%">
         Deskripsi : {{$barang->deskripsi}}
       </div>
-      <div class="box" style="top: 48%">
-        Nama Penjual : {{$barang->penjual->nama_penjual}}
+      <div class="box" style="top: 48%;">
+<        Nama Penjual : {{$barang->penjual->nama_penjual}}
       </div>
       <p class="rating" style="top: 56%">Rating {{$rating}} from 5</p>
       <p class="rating" style="top: 58%">Your rating : {{$rate}}</p>

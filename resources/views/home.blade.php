@@ -31,6 +31,7 @@
         <img src="/img/mppl15.png" class="login-img15">     
         <a href="{{ url('marketplace') }}" class="home-link" style=" ">Market Place</a>
         <a href="{{ url('foodrecipe') }}" class="home-link" style="left: 50%; top: 60%">Food Recipe</a>
+        <a href="/profil/list"><button type="submit" class="home-login-button" style="top: 78%; width: 8%;">List Order</button></a>
         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
             @csrf
             <button type="submit" class="home-login-button">{{ __('Logout') }}</button>
@@ -38,7 +39,7 @@
         <?php
             $avatar = Auth::user()->avatar;
         ?>
-        <img class="crop" src=<?php echo $avatar ?>>
+        <img class="crop" style="width: 98px; height: 98px; object-fit: cover" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
     </body>
 </html>
