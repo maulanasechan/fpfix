@@ -40,15 +40,15 @@
       <img src="/img/mppl13.png" class="login-img12"> 
       <img src="/img/mppl15.png" class="login-img15">
       <p class="judul" style="top: 20%">{{$barang->nama_barang}}</p>
-      <img class="cropprof"  src="/storage/{{$barang->filename}}" style="left: 30%">      
+      <img class="cropprof"  src="/storage/{{$barang->filename}}" style="left: 30%; ">      
       <div class="box">
         Harga : {{$barang->harga}}
       </div>
       <div class="box" style="top: 41%">
         Deskripsi : {{$barang->deskripsi}}
       </div>
-      <div class="box" style="top: 48%">
-        Nama Penjual : {{$barang->penjual->nama_penjual}}
+      <div class="box" style="top: 48%;">
+<        Nama Penjual : {{$barang->penjual->nama_penjual}}
       </div>
       <p class="rating" style="top: 56%">Rating {{$rating}} from 5</p>
       <p class="rating" style="top: 58%">Your rating : {{$rate}}</p>
@@ -176,7 +176,7 @@
     </div>
   </div> 
   <!-- <p class="judul" style="top: 85%">Komentar</p> -->
-  <<?php $s = 92; ?>
+  <?php $s = 92; ?>
   @foreach ($komen as $item)
   <div class="postkomen" style="height: 20%; top: {{92+($loop->index*25)}}%">
     <?php $s = 92+($loop->index*25); ?>

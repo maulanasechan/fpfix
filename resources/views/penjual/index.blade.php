@@ -34,7 +34,7 @@
         <?php
             $avatar = Auth::guard('penjual')->user()->avatar;
         ?>
-        <img class="crop" src=<?php echo $avatar ?>>
+        <img class="crop" style="width: 98px; height: 98px; object-fit: cover" src=<?php echo $avatar ?>>
         <a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
         <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">
             @csrf
