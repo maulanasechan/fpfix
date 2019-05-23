@@ -64,7 +64,7 @@
         <img src="/img/mppl12.png" class="login-img11"> 
         <img src="/img/mppl13.png" class="login-img12">
         <img src="/img/mppl15.png" class="login-img15"> 
-        <a href="/foodrecipe/appetaizer" class="logout" style="top: 80%;">Back</a>
+        <a href="/foodrecipe/" class="logout" style="top: 80%;">Back</a>
         <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
             @csrf
             <button type="submit" class="logout">{{ __('Logout') }}</button>

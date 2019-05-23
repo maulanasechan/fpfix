@@ -56,7 +56,7 @@
                     <td>Barang telah diterima</td>
                 @endif
                 @if (isset($item->resi))
-                <td><img src="/storage/{{$item->resi}}" style="height: 12%"></td>
+                <td><img src="/storage/{{$item->resi}}" style="height: 10%; width: auto"></td>
                 @else
                 <td></td>
                 @endif

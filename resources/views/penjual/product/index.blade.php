@@ -71,11 +71,7 @@
   {{$marketplace->links()}}
 </div>
 </center>
-<?php
-    $avatar = Auth::guard('penjual')->user()->avatar;
-?>
-<img class="crop" src=<?php echo $avatar ?>>
-<a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
+
 <a href="{{route('penjual.dashboard')}}" class="logout" style="top: 81%;">Back</a>
 <a href="{{route('marketplace.create')}}" class="logout" style="top: 74%;">Add</a>
 <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">

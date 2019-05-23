@@ -30,7 +30,7 @@
 <img src="/img/mppl12.png" class="login-img10" style="height: 4%">
 <img src="/img/mppl12.png" class="login-img11"> 
 <img src="/img/mppl13.png" class="login-img12"> 
-{{-- <div class="container" style="position: absolute; top: 70%">
+<div class="container" style="position: absolute; top: 70%">
   <div class="row">
     <div class="col-md-12">
       <div class="carousel slide multi-item-carousel" id="theCarousel" style="padding: 0 100px">
@@ -62,7 +62,7 @@
       </div>
     </div>
   </div>
-</div> --}}
+</div>
 <p  class="home-link2" style="top: 32%; font-size: 120%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);"><?php echo $username; ?></p>
 <p  class="home-link2" style="top: 36%; font-size: 120%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);"><?php echo $user->email; ?></p>
 <p  class="home-link2" style="top: 40%; font-size: 120%;left: 50%; margin-right: -50%; transform: translate(-50%, -50%);"><?php echo $user->alamat; ?></p>

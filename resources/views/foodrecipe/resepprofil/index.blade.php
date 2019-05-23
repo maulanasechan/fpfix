@@ -186,14 +186,13 @@
       @case(2)
         <a href="/foodrecipe/maincourse" class="logout" style="top: {{$s-8}}%;">Back</a>
           @break
-      @case(2)
+      @case(3)
         <a href="/foodrecipe/dessert" class="logout" style="top: {{$s-8}}%;">Back</a>
           @break
       @default
         <a href="/foodrecipe" class="logout" style="top: {{$s-8}}%;">Back</a>
         @break        
   @endswitch
-  <a href="/foodrecipe" class="logout" style="top: {{$s-8}}%;">Back</a>
   <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout" style="top: {{$s}}%">{{ __('Logout') }}</button>

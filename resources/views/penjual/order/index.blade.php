@@ -51,7 +51,12 @@
             <td><img src="{{$u->bukti}}" style="width: auto; height: 10%"></td>
             <td>{{$u->created_at->format('d M Y')}}</td>
             <td>
-              <button data-toggle="modal" data-target="#myModal{{$u->id}}" style="background-color: #354857; color: white; padding: 8px;">Resi</button>
+              @if (!isset($u->bukti) || $u->status == 1)
+                <button disabled data-toggle="modal" data-target="#myModal{{$u->id}}" style="background-color: #354857; color: white; padding: 8px;">Resi</button>
+              @else
+                <button data-toggle="modal" data-target="#myModal{{$u->id}}" style="background-color: #354857; color: white; padding: 8px;">Resi</button>
+              @endif
+              
             </td>  
           </tr>
 
@@ -63,14 +68,6 @@
 </div>
 </center>
 
-  
-
-
-<?php
-    $avatar = Auth::user()->avatar;
-?>
-<img class="crop" src=<?php echo $avatar ?>>
-<a href="/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
 <a href="{{route('penjual.dashboard')}}" class="logout" style="top: 80%;">Back</a>
 <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">
     @csrf

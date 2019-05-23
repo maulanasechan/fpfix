@@ -86,7 +86,7 @@ class BarangDijualController extends Controller
 
         $item->save();
 
-        return redirect()->route('penjual.dashboard')->with('success','Book added successfully...');
+        return redirect()->route('penjual.product')->with('success','Book added successfully...');
 
     }
 
