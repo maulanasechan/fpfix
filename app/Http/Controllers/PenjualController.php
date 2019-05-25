@@ -24,6 +24,12 @@ class PenjualController extends Controller
     	return view('penjual.index');
     }
 
+    public function profil()
+    {
+        $penjual = Auth::user();
+        return view('penjual.profil',compact('penjual',$penjual));
+    }
+
     public function order()
     {
         // $penjual = Penjual::find(Auth::guard('penjual')->user()->id);

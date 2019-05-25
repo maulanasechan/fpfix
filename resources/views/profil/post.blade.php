@@ -40,11 +40,11 @@
             @foreach($barang as $b)
               @if($loop->first)
               <div class="item active">
-              <div class="col-xs-4"><a href="/foodrecipe/resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
+              <div class="col-xs-4"><a href="/profil/resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @else
               <div class="item">
-              <div class="col-xs-4"><a href="/foodrecipe/resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
+              <div class="col-xs-4"><a href="/profil/resepprofil/{{$b->id_resep}}"><img src="/storage/{{$b->filename}}" class="img-responsive" style="width: 100%; height: 300px; "><p style="margin-top: 2%">{{$b->nama_makanan}}</p></div>
              </div>
              @endif
             @endforeach
@@ -71,7 +71,6 @@
 <a href="/profil/edit" class="home-link" style="margin-top: 80px; font-size: 150%;">Edit Profile</a>
 </div>
 <a href="{{route('home')}}" class="logout" style="top: 81%;">Back</a>
-<a href="/foodrecipe/create" class="logout" style="top: 74%;">Post</a>
 <form id="logout-form" action="{{ route('user.logout') }}" method="POST">
     @csrf
     <button type="submit" class="logout">{{ __('Logout') }}</button>
@@ -97,5 +96,6 @@ $('.multi-item-carousel .item').each(function(){
     $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
   }
 });
+</script>
 </body>
 </html>

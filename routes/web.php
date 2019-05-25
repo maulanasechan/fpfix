@@ -55,6 +55,7 @@ Route::prefix('penjual')->group(function(){
 	Route::get('/', 'PenjualController@index')->name('penjual.dashboard');
 	Route::post('/deleteItem', 'PenjualController@deleteItem')->name('penjual.deleteItem');
 	Route::post('/uploadResi', 'PenjualController@uploadResi')->name('penjual.uploadResi');
+	Route::get('/profil', 'PenjualController@profil')->name('penjual.profil');
 });
 
 // Route::get('/foodprofil', 'BarangDijualController@foodProfil');
@@ -75,6 +76,12 @@ Route::prefix('profil')->group(function(){
 	Route::get('/detail/{id}', "UserController@detail")->name('profil.detail');
 	Route::post('/uploadBukti', 'UserController@uploadBukti')->name('profil.uploadBukti');
 	Route::post('/diterima', "UserController@barangDiterima")->name('profil.barangDiterima');
+	Route::prefix('resepprofil')->group(function(){
+		Route::get('/{id}', 'UserController@resepProfil')->name('resepprofil.index');
+		Route::post('/rate', 'UserController@resepProfilRate')->name('resepprofil.rate');
+	});
+	Route::get('/update', 'UserController@resepProfilUpdate')->name('resepprofil.updateresep');
+	Route::post('/delete', 'UserController@resepProfilDelete')->name('resepprofil.deleteresep');
 });
 // Route::get('/foodrecipe', function () {
 //     return view('foodrecipe.index');

@@ -31,7 +31,11 @@
         <img src="/img/mppl15.png" class="login-img15">     
         <a href="{{ url('penjual/product') }}" class="home-link" style="word-spacing: 50px; ">List Product</a>
         <a href="{{ url('penjual/order') }}" class="home-link" style="left: 50%; top: 60%; word-spacing: 50px;">List Order</a>
-     
+        <?php
+          $avatar = Auth::user()->avatar;
+      ?>
+      <img class="crop" style="width: 98px; height: 98px; object-fit: cover" src=<?php echo $avatar ?>>
+      <a href="/penjual/profil" class="home-link" style="left: 6%; top: 49%; font-size: 150%">Profile</a>
         <form id="logout-form" action="{{ route('penjual.logout') }}" method="POST">
             @csrf
             <button type="submit" class="home-login-button">{{ __('Logout') }}</button>
